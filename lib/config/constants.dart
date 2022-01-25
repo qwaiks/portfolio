@@ -3,8 +3,12 @@ class AppConstants {
   static const primaryFont = "NeueMachina";
 }
 
+class AppImages{
+  static const portfolioImage = "assets/images/portfolio_image.jpg";
+}
+
 class AppString {
-  static const welcomeName = "Hi,\nI'm Kwaku";
+  static const welcomeName = "Hello,\nI'm Kwaku\nNtim";
   static const welcomeDesc =
       "I design and build beautiful mobile and desktop apps & experiences";
   static const portfolio = "PORTFOLIO";
