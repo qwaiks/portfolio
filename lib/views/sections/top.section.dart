@@ -3,8 +3,8 @@ import 'package:portfolio_webapp/config/constants.dart';
 import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 
-class WebScreen extends StatelessWidget {
-  const WebScreen({Key key}) : super(key: key);
+class TopSection extends StatelessWidget {
+  const TopSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class WebScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         child: Stack(
           children: [
             Positioned.fill(

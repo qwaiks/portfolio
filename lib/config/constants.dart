@@ -10,7 +10,7 @@ class AppImages{
 class AppString {
   static const welcomeName = "Hello,\nI'm Kwaku\nNtim";
   static const welcomeDesc =
-      "I design and build beautiful mobile and desktop apps & experiences";
+      "I design and build beautiful mobile, desktop & web apps & experiences";
   static const portfolio = "PORTFOLIO";
   static const contact = "CONTACT ME";
   static const resume = "RESUME";
