@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/constants.dart';
 import 'package:portfolio_webapp/config/size_config.dart';
+import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 
 class TopSection extends StatelessWidget {
@@ -11,20 +12,20 @@ class TopSection extends StatelessWidget {
     var size = SizeConfig();
     size.init(context);
 
-    final name = Text(
+    const name = Text(
       AppString.welcomeName,
-      style: Theme.of(context).textTheme.headline3.copyWith(
-          fontWeight: FontWeight.w600,
-          color: Colors.black,
-          fontSize: getProportionateScreenWidth(100)),
+      style: AppTextTheme.extraLage,
     );
-    final desc = Text(
-      AppString.welcomeDesc,
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300, height: 2.0),
+    final  desc = SizedBox(
+      width: 650,
+      child: Text(
+        AppString.welcomeDesc,
+        style: AppTextTheme.bodyText,
+      ),
     );
 
     final socialsList = SizedBox(
-      width: getProportionateScreenWidth(199),
+      width: 270,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,7 +37,6 @@ class TopSection extends StatelessWidget {
     );
 
     final appBar = Container(
-      width: getProportionateScreenWidth(510),
       padding: const EdgeInsets.all(24),
       color: Colors.transparent,
       child: Row(
@@ -50,32 +50,29 @@ class TopSection extends StatelessWidget {
     );
 
     final background = Container(
-      width: getProportionateScreenWidth(1119),
-      height: getProportionateScreenHeight(713),
+      width: 1119,
+      height:713,
       color: const Color(0XFFF6F6F6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          appBar,
-          ClipRRect(
-            child: Image.asset(
-              AppImages.portfolioImage,
-              width: getProportionateScreenWidth(609),
-              height: double.infinity,
-              fit: BoxFit.fill,
-            ),
-          ),
+          Flexible(child: appBar),
+          Flexible(child: Image.asset(
+            AppImages.portfolioImage,
+            height: double.infinity,
+            fit: BoxFit.cover,
+          ),)
         ],
       ),
     );
 
-    final downloadCVButton  = SizedBox(
-      width: getProportionateScreenWidth(353),
-      height: getProportionateScreenHeight(113),
+    final downloadCVButton = SizedBox(
+      width: 353,
+      height: 113,
       child: MaterialButton(
         elevation: 0.0,
-        onPressed:(){},
+        onPressed: () {},
         disabledColor: Colors.grey.shade500,
         disabledTextColor: Colors.white,
         disabledElevation: 0.0,
@@ -83,9 +80,9 @@ class TopSection extends StatelessWidget {
             ? const CircularProgressIndicator.adaptive(
           backgroundColor: Colors.white,
         )
-            :Text(
+            : Text(
           "Download CV".toUpperCase(),
-          style: TextStyle(fontSize: 30, letterSpacing: 8.3),
+          style: AppTextTheme.button.copyWith(letterSpacing: 8.3,),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
@@ -94,34 +91,27 @@ class TopSection extends StatelessWidget {
       ),
     );
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          children: [
-            Positioned.fill(
-                child: Align(alignment: Alignment.topRight, child: background)),
-            Positioned(
-                top: getProportionateScreenHeight(164),
-                left: getProportionateScreenWidth(200),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    name,
-                    Utils.verticalSpacer(),
-                    socialsList,
-                    Utils.verticalSpacer(),
-                    desc,
+    return  Stack(
+      children: [
+        Align(alignment: Alignment.topRight, child: background),
+        Positioned(
+          top: 200,
+          left: 500,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              name,
+              Utils.verticalSpacer(),
+              socialsList,
+              Utils.verticalSpacer(),
+              desc,
+              Utils.verticalSpacer(space: 62),
+              downloadCVButton
 
-                    Utils.verticalSpacer(space: 20),
-                    downloadCVButton
-
-                  ],
-                ))
-          ],
-        ),
-      ),
+            ],
+          ),
+        )
+      ],
     );
   }
 
