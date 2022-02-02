@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/utils.dart';
+import 'package:portfolio_webapp/views/sections/about.section.dart';
 import 'package:portfolio_webapp/views/sections/project.section.dart';
 import 'package:portfolio_webapp/views/sections/top.section.dart';
 import 'package:portfolio_webapp/views/sections/work.section.dart';
@@ -13,11 +14,13 @@ class WebScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          TopSection(),
+          //TopSection(),
           Utils.verticalSpacer(space: 100),
           WorkSection(),
           Utils.verticalSpacer(space: 100),
           ProjectSection(),
+          Utils.verticalSpacer(space: 100),
+          AboutSection(),
         ],
       ),
     );

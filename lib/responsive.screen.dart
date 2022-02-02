@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/config/size_config.dart';
 
 class Responsive extends StatelessWidget {
   final Widget mobile;
@@ -27,6 +28,11 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    var size = SizeConfig();
+    size.init(context);
+
     return LayoutBuilder(
       // If our width is more than 1100 then we consider it a desktop
       builder: (context, constraints) {

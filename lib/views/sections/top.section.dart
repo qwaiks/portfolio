@@ -9,8 +9,6 @@ class TopSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = SizeConfig();
-    size.init(context);
 
     const name = Text(
       AppString.welcomeName,
@@ -91,27 +89,25 @@ class TopSection extends StatelessWidget {
       ),
     );
 
-    return  Stack(
-      children: [
-        Align(alignment: Alignment.topRight, child: background),
-        Positioned(
-          top: 200,
-          left: 500,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              name,
-              Utils.verticalSpacer(),
-              socialsList,
-              Utils.verticalSpacer(),
-              desc,
-              Utils.verticalSpacer(space: 62),
-              downloadCVButton
+    final mainDetails = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          name,
+          Utils.verticalSpacer(),
+          socialsList,
+          Utils.verticalSpacer(),
+          desc,
+          Utils.verticalSpacer(space: 62),
+          downloadCVButton
+        ],);
 
-            ],
-          ),
-        )
-      ],
+    return  Container(
+      width: getProportionateScreenWidth(1249),
+      height: getProportionateScreenHeight(769),
+      child: Stack(
+    children: [
+
+    ],)
     );
   }
 
