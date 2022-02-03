@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 import 'package:portfolio_webapp/views/sections/about.section.dart';
 import 'package:portfolio_webapp/views/sections/project.section.dart';
@@ -10,11 +11,19 @@ class WebScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = SizeConfig();
+    size.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          //TopSection(),
+          Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                width: getProportionateScreenWidth(1241),
+                height: getProportionateScreenHeight(769),
+                child: TopSection(),
+              )),
           Utils.verticalSpacer(space: 100),
           WorkSection(),
           Utils.verticalSpacer(space: 100),

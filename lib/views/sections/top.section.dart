@@ -9,12 +9,12 @@ class TopSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    const name = Text(
+    final name = Text(
       AppString.welcomeName,
-      style: AppTextTheme.extraLage,
+      style: AppTextTheme.extraLage
+          .copyWith(fontSize: getProportionateScreenHeight(100)),
     );
-    final  desc = SizedBox(
+    final desc = SizedBox(
       width: 650,
       child: Text(
         AppString.welcomeDesc,
@@ -47,68 +47,72 @@ class TopSection extends StatelessWidget {
       ),
     );
 
-    final background = Container(
-      width: 1119,
-      height:713,
-      color: const Color(0XFFF6F6F6),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Flexible(child: appBar),
-          Flexible(child: Image.asset(
-            AppImages.portfolioImage,
-            height: double.infinity,
-            fit: BoxFit.cover,
-          ),)
-        ],
+    final background = Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        width: getProportionateScreenWidth(1119),
+        height: getProportionateScreenHeight(713),
+        color: const Color(0XFFF6F6F6),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Flexible(child: appBar),
+            Flexible(
+              child: Image.asset(
+                AppImages.portfolioImage,
+                height: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            )
+          ],
+        ),
       ),
     );
 
-    final downloadCVButton = SizedBox(
-      width: 353,
-      height: 113,
-      child: MaterialButton(
-        elevation: 0.0,
-        onPressed: () {},
-        disabledColor: Colors.grey.shade500,
-        disabledTextColor: Colors.white,
-        disabledElevation: 0.0,
-        child: false
-            ? const CircularProgressIndicator.adaptive(
-          backgroundColor: Colors.white,
-        )
-            : Text(
-          "Download CV".toUpperCase(),
-          style: AppTextTheme.button.copyWith(letterSpacing: 8.3,),
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
-        ),
-        color: Colors.pink.shade50,
+    final downloadCVButton = MaterialButton(
+      minWidth: getProportionateScreenWidth(353),
+      height: getProportionateScreenHeight(113),
+      elevation: 0.0,
+      onPressed: () {},
+      disabledColor: Colors.grey.shade500,
+      disabledTextColor: Colors.white,
+      disabledElevation: 0.0,
+      child: false
+          ? const CircularProgressIndicator.adaptive(
+              backgroundColor: Colors.white,
+            )
+          : Text(
+              "Download CV".toUpperCase(),
+              style: AppTextTheme.button.copyWith(
+                  letterSpacing: 8.3,
+                  fontSize: getProportionateScreenHeight(24)),
+            ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0),
       ),
+      color: Colors.pink.shade50,
     );
 
     final mainDetails = Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          name,
-          Utils.verticalSpacer(),
-          socialsList,
-          Utils.verticalSpacer(),
-          desc,
-          Utils.verticalSpacer(space: 62),
-          downloadCVButton
-        ],);
-
-    return  Container(
-      width: getProportionateScreenWidth(1249),
-      height: getProportionateScreenHeight(769),
-      child: Stack(
-    children: [
-
-    ],)
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        name,
+        Utils.verticalSpacer(),
+        socialsList,
+        Utils.verticalSpacer(),
+        desc,
+        Utils.verticalSpacer(space: getProportionateScreenHeight(62)),
+        downloadCVButton
+      ],
     );
+
+    return Container(
+        width: double.infinity,
+        child: Stack(
+          children: [background, mainDetails],
+        ));
   }
 
   Widget appBarAction(String title, Function onPressed) {

@@ -30,9 +30,6 @@ class Responsive extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    var size = SizeConfig();
-    size.init(context);
-
     return LayoutBuilder(
       // If our width is more than 1100 then we consider it a desktop
       builder: (context, constraints) {
