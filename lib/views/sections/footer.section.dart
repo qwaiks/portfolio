@@ -21,7 +21,7 @@ class FooterSection extends StatelessWidget {
             onTap: () {},
           ),
           CustomTextLink(
-            text: "twitter.com/ntim_cx",
+            text: "Built with Flutter Web",
             onTap: () {},
           ),
           CustomTextLink(
