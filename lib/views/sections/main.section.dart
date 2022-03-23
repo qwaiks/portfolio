@@ -13,29 +13,6 @@ class MainSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'KWAKU OWUSU-ANSA',
-                style: primaryTextTheme.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w800),
-              ),
-              Text(
-                'contact me',
-                style: primaryTextTheme.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w800),
-              )
-            ],
-          ),
-          Utils.verticalSpacer(),
-          const Divider(
-            color: Colors.white,
-            thickness: 3,
-            height: 0,
-            endIndent: 0,
-            indent: 0,
-          ),
           SizedBox(
             height: 670,
             child: Flex(

@@ -20,6 +20,7 @@ class WorkSection extends StatelessWidget {
           ),
         ),
         const Divider(
+          height: 100,
           color: Colors.white,
           thickness: 3,
         ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/size_config.dart';
+import 'package:portfolio_webapp/shared_widgets/footer.dart';
+import 'package:portfolio_webapp/shared_widgets/header.dart';
 import 'package:portfolio_webapp/views/sections/company.section.dart';
+import 'package:portfolio_webapp/views/sections/footer.section.dart';
 import 'package:portfolio_webapp/views/sections/main.section.dart';
 import 'package:portfolio_webapp/views/sections/work.section.dart';
 
@@ -16,7 +19,7 @@ class WebScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 20),
         child: ListView(
-          children: [MainSection(), WorkSection(), CompanySection()],
+          children: [Header(), MainSection(), WorkSection(), CompanySection(), LinksSection(), Footer()],
         ),
       ),
     );

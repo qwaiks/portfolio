@@ -9,7 +9,7 @@ class CompanySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height * 0.85,
       child: Marquee(
         delayDuration: Duration(seconds: 0),
         loopDuration: Duration(seconds: 20),
