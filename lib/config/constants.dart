@@ -10,6 +10,17 @@ class AppImages{
   static const waCommImage = "assets/images/wacomm_img.png";
 }
 
+class DummyData{
+  static const companies = [
+    'Walulel',
+    'BroadSpectrum',
+    'Interactive Edge',
+    'Petra Trust',
+    'Homechow',
+    '9+ others',
+  ];
+}
+
 class AppString {
   static const welcomeName = "Hello,\nI'm Kwaku\nNtim";
   static const welcomeDesc =
