@@ -78,25 +78,12 @@ flutter:
   fonts:
     - family: NeueMachina
       fonts:
-        - asset: assets/fonts/NeueMachina-Light.ttf
+        - asset: fonts/NeueMachina-Light.ttf
           weight: 200
-        - asset: assets/fonts/NeueMachina-Regular.ttf
+        - asset: fonts/NeueMachina-Regular.ttf
           weight: 400
-        - asset: assets/fonts/NeueMachina-UltraBold.ttf
+        - asset: fonts/NeueMachina-UltraBold.ttf
           weight: 800
-    - family: Satoshi
-      fonts:
-        - asset: assets/fonts/Satoshi-Light.otf
-        - asset: assets/fonts/Satoshi-Regular.otf
-        - asset: assets/fonts/Satoshi-Medium.otf
-        - asset: assets/fonts/Satoshi-Bold.otf
-        - asset: assets/fonts/Satoshi-Black.otf
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
-
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
