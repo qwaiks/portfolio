@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/constants.dart';
+import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 
@@ -43,9 +44,15 @@ class MainSection extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Text(
-                                    'Kwaku Owusu-Ansa',
-                                    style: primaryTextTheme.headlineLarge,
+                                  Flexible(
+                                    child: Text(
+                                      'Kwaku Owusu-Ansa',
+                                      style: primaryTextTheme.headlineLarge
+                                          .copyWith(
+                                              fontSize:
+                                                  getProportionateScreenHeight(
+                                                      70)),
+                                    ),
                                   ),
                                   Utils.horizontalSpacer(),
                                   Divider(
@@ -70,27 +77,28 @@ class MainSection extends StatelessWidget {
                       ),
                       Flexible(
                         child: Container(
-                          margin: const EdgeInsets.only(
-                              top: 30, bottom: 30, left: 40),
+                          margin: const EdgeInsets.only(top: 30, left: 40),
                           child: Column(
                             children: [
                               Flex(
                                 direction: Axis.horizontal,
                                 children: [
                                   Flexible(
+                                      flex: 2,
                                       child: Column(
-                                    children: [
-                                      Text(
-                                          'With over 3 years experience in building digital products that users love and cherish, I have worked mostly with startups in Food tech, Agri-tech, Health, Fin-tech, Social Media & Education.',
-                                          style: primaryTextTheme.bodyLarge
-                                              .copyWith(height: 1.3)),
-                                      Utils.verticalSpacer(),
-                                      Text(
-                                          'I am the founder of UX Campus: An Non Profit that seeks to inspire people to fall in love with UX Design, by organising free 1-2 day workshops across Ghana.',
-                                          style: primaryTextTheme.bodyLarge)
-                                    ],
-                                  )),
+                                        children: [
+                                          Text(
+                                              'With over 3 years experience in building digital products that users love and cherish, I have worked mostly with startups in Food tech, Agri-tech, Health, Fin-tech, Social Media & Education.',
+                                              style: primaryTextTheme.bodyLarge
+                                                  .copyWith(height: 1.3)),
+                                          Utils.verticalSpacer(),
+                                          Text(
+                                              'I am the founder of UX Campus: An Non Profit that seeks to inspire people to fall in love with UX Design, by organising free 1-2 day workshops across Ghana.',
+                                              style: primaryTextTheme.bodyLarge)
+                                        ],
+                                      )),
                                   Flexible(
+                                    flex: 1,
                                     child: Container(),
                                   ),
                                 ],

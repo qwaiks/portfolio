@@ -10,7 +10,6 @@ class TabletScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            CustomAppBar(),
             Container(
               color: Colors.blue,
             )

@@ -35,5 +35,5 @@ double getProportionateScreenWidth(double inputWidth) {
   // 375 is the layout width that designer use
   // return inputWidth;
   log(((inputWidth / 1440.0) * screenWidth).toString());
-  return (inputWidth / 1440.0) * screenWidth;
+  return (inputWidth / 1920.0) * screenWidth;
 }
