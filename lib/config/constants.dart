@@ -12,12 +12,12 @@ class AppImages{
 
 class DummyData{
   static const companies = [
-    'Walulel',
     'BroadSpectrum',
+    'Walulel',
     'Interactive Edge',
-    'Petra Trust',
-    'Homechow',
-    '9+ others',
+    'MeDent',
+    'ADs Pool',
+    '3+ others',
   ];
 }
 

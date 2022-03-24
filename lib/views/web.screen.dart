@@ -17,7 +17,7 @@ class WebScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 20),
+        padding:  EdgeInsets.symmetric(horizontal: 180, vertical: 20),
         child: ListView(
           children: [Header(), MainSection(), WorkSection(), CompanySection(), LinksSection(), Footer()],
         ),

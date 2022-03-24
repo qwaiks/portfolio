@@ -49,9 +49,8 @@ class MainSection extends StatelessWidget {
                                       'Kwaku Owusu-Ansa',
                                       style: primaryTextTheme.headlineLarge
                                           .copyWith(
-                                              fontSize:
-                                                  getProportionateScreenHeight(
-                                                      70)),
+                                              fontSize: SizeConfig.screenWidth *
+                                                  0.05 < 70 ? 60: 70),
                                     ),
                                   ),
                                   Utils.horizontalSpacer(),
@@ -64,7 +63,9 @@ class MainSection extends StatelessWidget {
                               Flexible(
                                   child: Text(
                                 'Mobile Engineer \nbased in Accra,\nGhana',
-                                style: primaryTextTheme.headlineLarge,
+                                style: primaryTextTheme.headlineLarge.copyWith(
+                                    fontSize: SizeConfig.screenWidth *
+                                        0.05 < 70 ? 60: 70),
                               )),
                             ],
                           ),
