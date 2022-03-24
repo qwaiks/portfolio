@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/config/colors.dart';
 import 'package:portfolio_webapp/config/constants.dart';
 
 ThemeData primaryTheme = ThemeData(
   primaryColor: Colors.black,
-  fontFamily: AppConstants.satoshiFont,
+  fontFamily: AppConstants.primaryFont,
+  textTheme: primaryTextTheme,
   colorScheme: ColorScheme.fromSwatch()
-      .copyWith(secondary: Color(0xFFA0AEC0), primary: Colors.black),
+      .copyWith(secondary: AppColors.colorSecondary, primary: Colors.black),
+);
+
+TextTheme primaryTextTheme = const TextTheme().copyWith(
+  displayLarge: const TextStyle(
+      fontSize: 75,
+      color: AppColors.lightThemeTextColor,
+      fontWeight: FontWeight.w700),
+  headlineLarge: const TextStyle(
+      fontSize: 70,
+      color: AppColors.lightThemeTextColor,
+      fontWeight: FontWeight.w700),
+  headlineMedium: const TextStyle(
+      fontSize: 65,
+      color: AppColors.lightThemeTextColor,
+      fontWeight: FontWeight.normal),
+  titleLarge: const TextStyle(
+      fontSize: 50,
+      color: AppColors.lightThemeTextColor,
+      fontWeight: FontWeight.w700),
+  bodyLarge: const TextStyle(
+      fontSize: 16,
+      color: AppColors.lightThemeTextColor,
+      height: 1.3,
+      fontWeight: FontWeight.normal),
+  bodyMedium: const TextStyle(
+      fontSize: 14,
+      color: AppColors.lightThemeTextColor,
+      fontWeight: FontWeight.normal),
 );
 
 class AppTextTheme {

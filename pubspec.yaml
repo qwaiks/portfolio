@@ -29,8 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  graphql_flutter: 5.0.1
-  liquid_swipe: ^2.1.1
+  widget_marquee: ^0.0.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -79,34 +78,10 @@ flutter:
   fonts:
     - family: NeueMachina
       fonts:
-        - asset: assets/fonts/NeueMachina-Ultralight.ttf
-          weight: 100
-        - asset: assets/fonts/NeueMachina-Light.ttf
+        - asset: fonts/NeueMachina-Light.ttf
           weight: 200
-        - asset: assets/fonts/NeueMachina-Regular.ttf
+        - asset: fonts/NeueMachina-Regular.ttf
           weight: 400
-        - asset: assets/fonts/NeueMachina-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/NeueMachina-Bold.ttf
-          weight: 600
-        - asset: assets/fonts/NeueMachina-UltraBold.ttf
-          weight: 800
-        - asset: assets/fonts/NeueMachina-Black.ttf
-          weight: 900
-
-    - family: Satoshi
-      fonts:
-        - asset: assets/fonts/Satoshi-Light.otf
-        - asset: assets/fonts/Satoshi-Regular.otf
-        - asset: assets/fonts/Satoshi-Medium.otf
-        - asset: assets/fonts/Satoshi-Bold.otf
-        - asset: assets/fonts/Satoshi-Black.otf
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
-
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,32 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_webapp/shared_widgets/custom_text_link.dart';
+import 'package:portfolio_webapp/config/theme.dart';
+import 'package:portfolio_webapp/config/utils.dart';
 
-class FooterSection extends StatelessWidget {
-  const FooterSection({Key key}) : super(key: key);
+class LinksSection extends StatelessWidget {
+  const LinksSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.05),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.8,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextLink(
-            text: "linkedin.com/in/kwaku-owusu-ansa/",
-            onTap: () {},
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              'Links',
+              style: primaryTextTheme.headlineLarge,
+            ),
           ),
-          CustomTextLink(
-            text: "github.com/qwaiks",
-            onTap: () {},
+          const Divider(
+            height: 100,
+            color: Colors.white,
+            thickness: 3,
           ),
-          CustomTextLink(
-            text: "Built with Flutter Web",
-            onTap: () {},
+          Text(
+            'Get in touch',
+            style: primaryTextTheme.headlineMedium,
           ),
-          CustomTextLink(
-            text: "© 2021 , All rights",
-            onTap: () {},
+          Utils.verticalSpacer(space: 40),
+          Text(
+            'View Resume',
+            style: primaryTextTheme.headlineMedium,
+          ),
+          Utils.verticalSpacer(space: 40),
+          Text(
+            'UX Campus',
+            style: primaryTextTheme.headlineMedium,
           ),
         ],
       ),
