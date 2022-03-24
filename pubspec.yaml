@@ -82,8 +82,6 @@ flutter:
           weight: 200
         - asset: fonts/NeueMachina-Regular.ttf
           weight: 400
-        - asset: fonts/NeueMachina-UltraBold.ttf
-          weight: 800
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
