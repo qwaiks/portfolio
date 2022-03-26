@@ -4,7 +4,9 @@ import 'package:portfolio_webapp/config/theme.dart';
 import 'package:widget_marquee/widget_marquee.dart';
 
 class CompanySection extends StatelessWidget {
-  const CompanySection({Key key}) : super(key: key);
+  final bool isMobile;
+
+  const CompanySection({Key key, this.isMobile = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,14 @@ class CompanySection extends StatelessWidget {
                   child: Text(
                     DummyData.companies[index],
                     style: index.isEven
-                        ? primaryTextTheme.displayLarge
+                        ? primaryTextTheme.displayLarge.copyWith(
+                            fontSize: isMobile
+                                ? displayLargeMobile
+                                : displayLargeWeb)
                         : primaryTextTheme.displayLarge.copyWith(
+                            fontSize: isMobile
+                                ? displayLargeMobile
+                                : displayLargeWeb,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 2
