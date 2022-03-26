@@ -46,11 +46,14 @@ class MainSection extends StatelessWidget {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'Kwaku Owusu-Ansa',
+                                      AppString.name,
                                       style: primaryTextTheme.headlineLarge
                                           .copyWith(
                                               fontSize: SizeConfig.screenWidth *
-                                                  0.05 < 70 ? 60: 70),
+                                                          0.05 <
+                                                      70
+                                                  ? 60
+                                                  : 70),
                                     ),
                                   ),
                                   Utils.horizontalSpacer(),
@@ -62,10 +65,11 @@ class MainSection extends StatelessWidget {
                               ),
                               Flexible(
                                   child: Text(
-                                'Mobile Engineer \nbased in Accra,\nGhana',
+                                AppString.jobTitle,
                                 style: primaryTextTheme.headlineLarge.copyWith(
-                                    fontSize: SizeConfig.screenWidth *
-                                        0.05 < 70 ? 60: 70),
+                                    fontSize: SizeConfig.screenWidth * 0.05 < 70
+                                        ? 60
+                                        : 70),
                               )),
                             ],
                           ),
@@ -88,14 +92,13 @@ class MainSection extends StatelessWidget {
                                       flex: 2,
                                       child: Column(
                                         children: [
-                                          Text(
-                                              'With over 3 years experience in building digital products that users love and cherish, I have worked mostly with startups in Food tech, Agri-tech, Health, Fin-tech, Social Media & Education.',
+                                          Text(AppString.professionalDesc,
                                               style: primaryTextTheme.bodyLarge
                                                   .copyWith(height: 1.3)),
                                           Utils.verticalSpacer(),
-                                          Text(
-                                              'I am the founder of UX Campus: An Non Profit that seeks to inspire people to fall in love with UX Design, by organising free 1-2 day workshops across Ghana.',
-                                              style: primaryTextTheme.bodyLarge)
+                                          Text(AppString.professionalDescCont,
+                                              style: primaryTextTheme.bodyLarge
+                                                  .copyWith(height: 1.3))
                                         ],
                                       )),
                                   Flexible(
