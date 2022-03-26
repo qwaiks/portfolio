@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Ntim.dev',
+        title: 'Kwaku Owusu-Ansa | Porfolio',
         debugShowCheckedModeBanner: false,
         theme: primaryTheme,
         home: const Responsive(
