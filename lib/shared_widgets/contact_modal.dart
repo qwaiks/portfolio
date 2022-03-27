@@ -20,34 +20,38 @@ class _ContactMeModalState extends State<ContactMeModal> {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = isDeviceMobile(context: context);
+    bool isTablet = isDeviceTablet(context: context);
+
     final title = Text(
       AppString.contactTitle,
-      style: primaryTextTheme.displayLarge.copyWith(color: Colors.black),
+      style: primaryTextTheme.titleLarge.copyWith(
+          color: Colors.black,
+          fontSize: isMobile ? titleLargeMobile : titleLargeWeb),
     );
 
     final desc = Container(
-        width: 400,
+        width: isMobile ? 200 : 400,
+        padding: isMobile ? EdgeInsets.zero : EdgeInsets.all(30),
         child: Text(
           AppString.contactDesc,
-          style: primaryTextTheme.bodyLarge.copyWith(color: Color(0XFF696969)),
+          style: primaryTextTheme.bodyMedium.copyWith(
+              color: Color(0XFF696969),
+              fontSize: isMobile ? 12 : bodyMediumWeb),
         ));
 
-    final closeButton = ElevatedButton(
-      onPressed: () {},
-      child: Icon(
-        Icons.close,
-        color: Colors.white,
+    final closeButton = SizedBox(
+      width: 30,
+      height: 30,
+      child: MaterialButton(
+        onPressed: () => Navigator.pop(context),
+        color: Colors.black,
+        child: const Icon(
+          Icons.close,
+          size: 12,
+          color: Colors.white,
+        ),
       ),
-      style: ButtonStyle(
-          fixedSize: MaterialStateProperty.all(Size(50, 50)),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-          //padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 20)),
-          backgroundColor: MaterialStateProperty.all(Colors.black),
-          // <-- Button color
-          overlayColor: MaterialStateProperty.resolveWith<Color>((states) {
-            if (states.contains(MaterialState.pressed))
-              return Colors.grey; // <-- Splash color
-          })),
     );
 
     final name = CustomTextField(
@@ -72,7 +76,7 @@ class _ContactMeModalState extends State<ContactMeModal> {
 
     final projectDesc = CustomTextField(
       hintText: AppString.contactProjectDesc,
-      maxLines: 8,
+      maxLines: isMobile ? 4 : 8,
       validator: (value) {
         if (value.isEmpty) {
           return 'Field cannot be empty';
@@ -88,7 +92,8 @@ class _ContactMeModalState extends State<ContactMeModal> {
         return InkWell(
             child: Text(
           link.provider,
-          style: primaryTextTheme.titleLarge.copyWith(color: Colors.black),
+          style: primaryTextTheme.titleLarge
+              .copyWith(color: Colors.black, fontSize: isMobile ? 18 : 36),
         ));
       }).toList(),
     );
@@ -126,12 +131,52 @@ class _ContactMeModalState extends State<ContactMeModal> {
       onPressed: () {},
     );
 
+    final contactFormWeb = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Flexible(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            name,
+            email,
+            Utils.verticalSpacer(space: 10),
+            contactInterests,
+            Utils.verticalSpacer(),
+            contactBudget
+          ],
+        )),
+        Utils.horizontalSpacer(),
+        Flexible(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [projectDesc, Utils.verticalSpacer(space: 5), button],
+        )),
+      ],
+    );
+
+    final contactFormMobile = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        name,
+        email,
+        Utils.verticalSpacer(space: 12),
+        contactInterests,
+        Utils.verticalSpacer(),
+        contactBudget,
+        Utils.verticalSpacer(space: 16),
+        projectDesc,
+        Utils.verticalSpacer(space: 16),
+        button
+      ],
+    );
+
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 36),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      alignment: Alignment.center,
+      padding: isMobile ? EdgeInsets.all(20) : EdgeInsets.all(36),
+      child: ListView(
         children: [
-          Utils.verticalSpacer(space: 50),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,42 +190,19 @@ class _ContactMeModalState extends State<ContactMeModal> {
             ],
           ),
           Utils.verticalSpacer(),
-          Divider(
+          const Divider(
             color: Colors.black,
             thickness: 2,
           ),
           Utils.verticalSpacer(),
           socialLinks,
           Utils.verticalSpacer(),
-          Divider(
+          const Divider(
             color: Colors.black,
             thickness: 2,
           ),
           Utils.verticalSpacer(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  name,
-                  email,
-                  Utils.verticalSpacer(space: 10),
-                  contactInterests,
-                  Utils.verticalSpacer(),
-                  contactBudget
-                ],
-              )),
-              Utils.horizontalSpacer(),
-              Flexible(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [projectDesc, Utils.verticalSpacer(space: 5), button],
-              )),
-            ],
-          )
+          isMobile ? contactFormMobile : contactFormWeb
         ],
       ),
     );

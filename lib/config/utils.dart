@@ -13,3 +13,16 @@ class Utils {
     );
   }
 }
+
+bool isDeviceMobile({BuildContext context}) {
+  return MediaQuery.of(context).size.width < 650;
+}
+
+bool isDeviceTablet({BuildContext context}) {
+  return MediaQuery.of(context).size.width < 1100 &&
+      MediaQuery.of(context).size.width >= 650;
+}
+
+bool isDeviceWeb({BuildContext context}) {
+  return MediaQuery.of(context).size.width >= 1100;
+}

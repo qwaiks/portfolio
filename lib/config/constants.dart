@@ -21,6 +21,7 @@ const double bodyMediumMobile = 14;
 class AppImages {
   static const portfolioImage = "assets/images/portfolio_image.jpg";
   static const waCommImage = "assets/images/wacomm_img.png";
+  static const icDropdown = "assets/images/dropdown.svg";
 }
 
 class DummyData {
@@ -57,7 +58,7 @@ class AppString {
   static const welcomeDesc =
       "I design and build beautiful mobile, desktop & web apps & experiences";
   static const portfolio = "PORTFOLIO";
-  static const contact = "CONTACT ME";
+  static const contactMe = 'contact me';
   static const resume = "RESUME";
 
   static String contactTitle = 'Get in\ntouch.';

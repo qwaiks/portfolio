@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_webapp/config/constants.dart';
 
 class CustomDropdown extends StatefulWidget {
   final dynamic initalValue;
@@ -58,7 +59,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
       ),
       child: DropdownButton(
         underline: Container(),
-
+        icon: SvgPicture.asset(AppImages.icDropdown),
         isExpanded: true,
         hint: Text(widget.hint),
         //icon: SvgPicture.asset(),

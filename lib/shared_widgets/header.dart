@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/config/constants.dart';
+import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 import 'package:portfolio_webapp/shared_widgets/contact_modal.dart';
@@ -9,6 +11,8 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = isDeviceMobile(context: context);
+    bool isTablet = isDeviceTablet(context: context);
     return Column(
       children: [
         Container(
@@ -16,19 +20,21 @@ class Header extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'KWAKU OWUSU-ANSA',
+                AppString.name,
                 style: primaryTextTheme.bodyLarge
                     .copyWith(fontWeight: FontWeight.w800),
               ),
               InkWell(
-                onTap: (){
+                onTap: () {
                   SideSheet.right(
                       body: ContactMeModal(),
-                      context: context
-                  );
+                      context: context,
+                      width: isMobile
+                          ? SizeConfig.screenWidth
+                          : SizeConfig.screenWidth * 0.5);
                 },
                 child: Text(
-                  'contact me',
+                  AppString.contactMe,
                   style: primaryTextTheme.bodyLarge
                       .copyWith(fontWeight: FontWeight.w800),
                 ),
