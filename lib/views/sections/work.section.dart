@@ -5,12 +5,15 @@ import 'package:portfolio_webapp/config/utils.dart';
 import 'package:portfolio_webapp/shared_widgets/section_header.dart';
 
 class WorkSection extends StatelessWidget {
-  final bool isMobile;
 
-  const WorkSection({Key key, this.isMobile = false}) : super(key: key);
+  const WorkSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    bool isMobile = isDeviceMobile(context: context);
+    bool isTablet = isDeviceTablet(context: context);
+
     final gridViewWork = GridView.builder(
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,7 +56,6 @@ class WorkSection extends StatelessWidget {
       children: [
         SectionHeader(
           title: 'Recent works',
-          isMobile: isMobile,
         ),
         Utils.verticalSpacer(),
         isMobile ? listViewWork : gridViewWork

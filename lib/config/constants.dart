@@ -35,10 +35,10 @@ class DummyData {
   ];
 
   static const socialLinks = [
-    {'provider': 'Email', 'link': 'kwaku315@gmail.com'},
+    {'provider': 'Email', 'link': AppString.emailLink},
     //{'provider': 'Website', 'link': 'http://www.ntim.dev'},
-    {'provider': 'Twitter', 'link': 'http://www.twitter.com/ntim_cx'},
-    {'provider': 'LinkedIn', 'link': 'https://www.linkedin.com/in/kwaku-owusu-ansa/'},
+    {'provider': 'Twitter', 'link': AppString.twitterLink},
+    {'provider': 'LinkedIn', 'link': AppString.linkedInLink},
   ];
 }
 
@@ -65,9 +65,14 @@ class AppString {
   static String contactDesc = "Thanks in advance for reaching out! Please note "
       "that the contact form is for work only. If you just want to say hello, "
       "then hit me up on any of my social media handles.";
+  static const String emailLink = 'kwaku315@gmail.com';
   static String twitter = 'Twitter';
-  static String instagram = 'Instagram';
+  static const String twitterLink = 'http://www.twitter.com/ntim_cx';
+  static const String resumeLink =
+      'https://docs.google.com/document/d/1eCugIMGUMBd1I2bLlMxqtnyJnevGnFd3Iafm1FxGRFU/edit?usp=sharing';
   static String linkedIN = 'LinkedIn';
+  static const String linkedInLink =
+      'https://www.linkedin.com/in/kwaku-owusu-ansa/';
   static String contactName = 'Name';
   static String contactEmail = 'Email Address';
   static String contactProjectDesc = 'Tell me about your project';

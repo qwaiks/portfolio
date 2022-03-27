@@ -58,13 +58,16 @@ class MobileScreen extends StatelessWidget {
         minimum: const EdgeInsets.symmetric(vertical: 16),
         child: ListView(
           children: [
-            Padding(
+            const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16), child: Header()),
             main,
-            WorkSection(isMobile: true),
-            CompanySection(isMobile: true),
-            LinksSection(isMobile: true),
-            Footer()
+            const WorkSection(),
+            const CompanySection(),
+            const LinksSection(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Footer(),
+            )
           ],
         ),
       ),
