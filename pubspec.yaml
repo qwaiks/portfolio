@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^1.0.3
+  side_sheet: ^1.0.1
   widget_marquee: ^0.0.5
 
 

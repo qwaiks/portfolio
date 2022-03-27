@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
+import 'package:portfolio_webapp/shared_widgets/contact_modal.dart';
+import 'package:side_sheet/side_sheet.dart';
 
 class Header extends StatelessWidget {
   const Header({Key key}) : super(key: key);
@@ -18,10 +20,18 @@ class Header extends StatelessWidget {
                 style: primaryTextTheme.bodyLarge
                     .copyWith(fontWeight: FontWeight.w800),
               ),
-              Text(
-                'contact me',
-                style: primaryTextTheme.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w800),
+              InkWell(
+                onTap: (){
+                  SideSheet.right(
+                      body: ContactMeModal(),
+                      context: context
+                  );
+                },
+                child: Text(
+                  'contact me',
+                  style: primaryTextTheme.bodyLarge
+                      .copyWith(fontWeight: FontWeight.w800),
+                ),
               ),
             ],
           ),

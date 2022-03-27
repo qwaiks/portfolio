@@ -32,6 +32,13 @@ class DummyData {
     'ADs Pool',
     '3+ others',
   ];
+
+  static const socialLinks = [
+    {'provider': 'Email', 'link': 'kwaku315@gmail.com'},
+    //{'provider': 'Website', 'link': 'http://www.ntim.dev'},
+    {'provider': 'Twitter', 'link': 'http://www.twitter.com/ntim_cx'},
+    {'provider': 'LinkedIn', 'link': 'https://www.linkedin.com/in/kwaku-owusu-ansa/'},
+  ];
 }
 
 class AppString {
@@ -53,7 +60,16 @@ class AppString {
   static const contact = "CONTACT ME";
   static const resume = "RESUME";
 
-
+  static String contactTitle = 'Get in\ntouch.';
+  static String contactDesc = "Thanks in advance for reaching out! Please note "
+      "that the contact form is for work only. If you just want to say hello, "
+      "then hit me up on any of my social media handles.";
+  static String twitter = 'Twitter';
+  static String instagram = 'Instagram';
+  static String linkedIN = 'LinkedIn';
+  static String contactName = 'Name';
+  static String contactEmail = 'Email Address';
+  static String contactProjectDesc = 'Tell me about your project';
 }
 
 class Api {
