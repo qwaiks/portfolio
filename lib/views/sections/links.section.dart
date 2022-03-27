@@ -44,7 +44,7 @@ class LinksSection extends StatelessWidget {
             ),
           ),
           Text(
-            'UX Campus',
+            'Blog',
             style: primaryTextTheme.headlineMedium.copyWith(
                 fontSize: isMobile ? headlineMediumMobile : headlineMediumWeb),
           ),

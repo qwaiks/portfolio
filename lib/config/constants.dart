@@ -76,6 +76,10 @@ class AppString {
   static String contactName = 'Name';
   static String contactEmail = 'Email Address';
   static String contactProjectDesc = 'Tell me about your project';
+  static String websiteIncompleteTitle = 'Hi 👋🙈';
+  static String websiteIncompleteDecs = "Thank you for visiting my portfolio website. Please note that it is "
+      "currently under construction so I'd like to apologize in advance for any "
+      "inconvenience you may have to deal with.\nThank you 😊";
 }
 
 class Api {

@@ -24,40 +24,30 @@ class Footer extends StatelessWidget {
         ),
         Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'contact me',
-                style: primaryTextTheme.bodyMedium,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'linkedin',
-                style: primaryTextTheme.bodyMedium,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'twitter',
-                style: primaryTextTheme.bodyMedium,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'email',
-                style: primaryTextTheme.bodyMedium,
-              ),
-            ),
+            externalLink(
+                title: 'email',
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                onTap: () => launch(
+                    Uri(scheme: 'mailto', path: AppString.emailLink)
+                        .toString())),
+            externalLink(
+                title: 'twitter',
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                onTap: () => launch(AppString.twitterLink,
+                    forceWebView: true, forceSafariVC: true)),
+            externalLink(
+                title: 'linkedIn',
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                onTap: () => launch(AppString.linkedInLink,
+                    forceWebView: true, forceSafariVC: true)),
           ],
         ),
-        Text(
-          'terms',
-          style: primaryTextTheme.bodyMedium,
-        )
+        externalLink(
+            title: AppString.contactMe,
+            onTap: () => SideSheet.right(
+                body: ContactMeModal(),
+                context: context,
+                width: isMobile ? SizeConfig.screenWidth : SizeConfig.screenWidth * 0.5))
       ],
     );
 
@@ -98,7 +88,7 @@ class Footer extends StatelessWidget {
                 onTap: () => SideSheet.right(
                     body: ContactMeModal(),
                     context: context,
-                    width: SizeConfig.screenWidth))
+                    width: isMobile ? SizeConfig.screenWidth : SizeConfig.screenWidth * 0.5))
           ],
         ),
       ],
@@ -121,11 +111,11 @@ class Footer extends StatelessWidget {
     );
   }
 
-  Widget externalLink({Function onTap, String title}) {
+  Widget externalLink({Function onTap, String title, EdgeInsets padding = const EdgeInsets.symmetric(vertical: 8)}) {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: padding,
         child: Text(
           title,
           style: primaryTextTheme.bodyMedium,
