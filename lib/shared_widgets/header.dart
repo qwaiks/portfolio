@@ -4,7 +4,7 @@ import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
 import 'package:portfolio_webapp/shared_widgets/contact_modal.dart';
-import 'package:side_sheet/side_sheet.dart';
+import 'package:portfolio_webapp/shared_widgets/side_sheet.widget.dart';
 
 class Header extends StatelessWidget {
   const Header({Key key}) : super(key: key);

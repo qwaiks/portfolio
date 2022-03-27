@@ -31,7 +31,6 @@ dependencies:
     sdk: flutter
   flutter_svg: ^1.0.3
   url_launcher: ^6.0.20
-  side_sheet: ^1.0.1
   widget_marquee: ^0.0.5
 
 
