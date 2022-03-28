@@ -6,6 +6,7 @@ import 'package:portfolio_webapp/models/social_link.dart';
 import 'package:portfolio_webapp/shared_widgets/custom_button.widget.dart';
 import 'package:portfolio_webapp/shared_widgets/custom_dropdown.dart';
 import 'package:portfolio_webapp/shared_widgets/custom_text_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactMeModal extends StatefulWidget {
   const ContactMeModal({Key key}) : super(key: key);
@@ -90,6 +91,16 @@ class _ContactMeModalState extends State<ContactMeModal> {
       children: DummyData.socialLinks.map((e) {
         SocialLink link = SocialLink.fromJson(e);
         return InkWell(
+          onTap: () {
+            if(link.link.contains('@')){
+              launch(
+                  Uri(scheme: 'mailto', path: AppString.emailLink)
+                      .toString());
+            }else{
+              launch(link.link,
+                  forceWebView: true, forceSafariVC: true)
+            }
+          },
             child: Text(
           link.provider,
           style: primaryTextTheme.titleLarge
