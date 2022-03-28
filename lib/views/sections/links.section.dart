@@ -29,7 +29,7 @@ class LinksSection extends StatelessWidget {
             onTap: () => SideSheet.right(
                 body: ContactMeModal(),
                 context: context,
-                width: SizeConfig.screenWidth),
+                width: isMobile ? SizeConfig.screenWidth : SizeConfig.screenWidth * 0.5),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(
