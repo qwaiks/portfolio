@@ -98,7 +98,7 @@ class _ContactMeModalState extends State<ContactMeModal> {
                       .toString());
             }else{
               launch(link.link,
-                  forceWebView: true, forceSafariVC: true)
+                  forceWebView: true, forceSafariVC: true);
             }
           },
             child: Text(
