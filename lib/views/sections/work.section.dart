@@ -2,36 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/constants.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
+import 'package:portfolio_webapp/shared_widgets/custom_chip.dart';
 import 'package:portfolio_webapp/shared_widgets/section_header.dart';
 
 class WorkSection extends StatelessWidget {
-
   const WorkSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     bool isMobile = isDeviceMobile(context: context);
     bool isTablet = isDeviceTablet(context: context);
 
     final gridViewWork = GridView.builder(
         shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 1,
             crossAxisCount: 2,
             crossAxisSpacing: 150,
-            mainAxisExtent: 1000),
+            mainAxisExtent:
+                MediaQuery.of(context).size.width < 1350 ? 900 : 1200),
         itemCount: 5,
         itemBuilder: (ctx, index) {
           return WorkTile(
-            paddingTop: isMobile
-                ? 0
-                : index.isOdd
-                    ? 100
-                    : 0,
+            paddingTop: index.isOdd ? 100 : 0,
             image: AppImages.waCommImage,
             title: 'GrainMate Mobile',
             isMobile: isMobile,
+            androidLink: 'adonaodina',
+            iosLink: 'poamdoaimd',
             desc:
                 'GrainMate app is supercharging African farmers and agribusinesses with the tools and resources they need to get to the next level ⚡️',
           );
@@ -93,6 +91,25 @@ class WorkTile extends StatelessWidget {
         children: [
           Image.asset(
             image,
+          ),
+          Utils.verticalSpacer(),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Visibility(
+                  visible: androidLink != null && androidLink.isNotEmpty,
+                  child: CustomChip(
+                    title: 'Android',
+                    link: androidLink,
+                  )),
+              Visibility(
+                visible: iosLink != null && iosLink.isNotEmpty,
+                child: CustomChip(
+                  title: 'iOS',
+                  link: iosLink,
+                ),
+              )
+            ],
           ),
           Utils.verticalSpacer(),
           Padding(

@@ -49,17 +49,17 @@ class LinksSection extends StatelessWidget {
                       isMobile ? headlineMediumMobile : headlineMediumWeb),
             ),
           ),
-          Text(
-            'Blog',
-            style: primaryTextTheme.headlineMedium.copyWith(
-                fontSize: isMobile ? headlineMediumMobile : headlineMediumWeb),
-          ),
+          // Text(
+          //   'Blog',
+          //   style: primaryTextTheme.headlineMedium.copyWith(
+          //       fontSize: isMobile ? headlineMediumMobile : headlineMediumWeb),
+          // ),
         ],
       ),
     ));
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery.of(context).size.height * 0.8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
