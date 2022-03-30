@@ -22,7 +22,7 @@ class MainSection extends StatelessWidget {
                 Flexible(
                     flex: 2,
                     child: Container(
-                      padding: EdgeInsets.only(top: 100, right: 40),
+                      padding: const EdgeInsets.only(top: 100, right: 40),
                       child: Image.asset(AppImages.portfolioImage,
                           fit: BoxFit.cover, height: double.infinity),
                     )),
@@ -49,11 +49,9 @@ class MainSection extends StatelessWidget {
                                       AppString.name,
                                       style: primaryTextTheme.headlineLarge
                                           .copyWith(
-                                              fontSize: SizeConfig.screenWidth *
-                                                          0.05 <
-                                                      70
-                                                  ? 60
-                                                  : 70),
+                                              fontSize:
+                                                  getProportionateScreenWidth(
+                                                      80)),
                                     ),
                                   ),
                                   Utils.horizontalSpacer(),
@@ -64,13 +62,12 @@ class MainSection extends StatelessWidget {
                                 ],
                               ),
                               Flexible(
-                                  child: Text(
-                                AppString.jobTitle,
-                                style: primaryTextTheme.headlineLarge.copyWith(
-                                    fontSize: SizeConfig.screenWidth * 0.05 < 70
-                                        ? 60
-                                        : 70),
-                              )),
+                                child: Text(AppString.jobTitle,
+                                    style:
+                                        primaryTextTheme.headlineLarge.copyWith(
+                                      fontSize: getProportionateScreenWidth(80),
+                                    )),
+                              )
                             ],
                           ),
                         ),

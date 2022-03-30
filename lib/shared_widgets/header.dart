@@ -20,7 +20,7 @@ class Header extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppString.name,
+                AppString.name.toUpperCase(),
                 style: primaryTextTheme.bodyLarge
                     .copyWith(fontWeight: FontWeight.w800),
               ),
