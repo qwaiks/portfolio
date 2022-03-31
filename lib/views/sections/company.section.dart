@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/constants.dart';
 import 'package:portfolio_webapp/config/theme.dart';
+import 'package:portfolio_webapp/config/utils.dart';
 import 'package:widget_marquee/widget_marquee.dart';
 
 class CompanySection extends StatelessWidget {
+
   const CompanySection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    bool isMobile = isDeviceMobile(context: context);
+    bool isTablet = isDeviceTablet(context: context);
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.85,
       child: Marquee(
@@ -25,8 +31,14 @@ class CompanySection extends StatelessWidget {
                   child: Text(
                     DummyData.companies[index],
                     style: index.isEven
-                        ? primaryTextTheme.displayLarge
+                        ? primaryTextTheme.displayLarge.copyWith(
+                            fontSize: isMobile
+                                ? displayLargeMobile
+                                : displayLargeWeb)
                         : primaryTextTheme.displayLarge.copyWith(
+                            fontSize: isMobile
+                                ? displayLargeMobile
+                                : displayLargeWeb,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 2

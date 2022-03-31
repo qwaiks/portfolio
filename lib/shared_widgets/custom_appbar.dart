@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
               : Container(),
           TextButton(onPressed: () {}, child: const Text(AppString.portfolio)),
           Utils.horizontalSpacer(),
-          TextButton(onPressed: () {}, child: const Text(AppString.contact)),
+          TextButton(onPressed: () {}, child: const Text(AppString.contactMe)),
           Utils.horizontalSpacer(),
           TextButton(onPressed: () {}, child: const Text(AppString.resume)),
         ],

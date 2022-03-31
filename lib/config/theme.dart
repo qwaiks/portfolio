@@ -12,28 +12,28 @@ ThemeData primaryTheme = ThemeData(
 
 TextTheme primaryTextTheme = const TextTheme().copyWith(
   displayLarge: const TextStyle(
-      fontSize: 75,
+      fontSize: displayLargeWeb,
       color: AppColors.lightThemeTextColor,
       fontWeight: FontWeight.w700),
   headlineLarge: const TextStyle(
-      fontSize: 70,
+      fontSize: headlineLargeWeb,
       color: AppColors.lightThemeTextColor,
       fontWeight: FontWeight.w700),
   headlineMedium: const TextStyle(
-      fontSize: 65,
+      fontSize: headlineMediumWeb,
       color: AppColors.lightThemeTextColor,
       fontWeight: FontWeight.normal),
   titleLarge: const TextStyle(
-      fontSize: 50,
+      fontSize: titleLargeWeb,
       color: AppColors.lightThemeTextColor,
       fontWeight: FontWeight.w700),
   bodyLarge: const TextStyle(
-      fontSize: 16,
+      fontSize: bodyLargeWeb,
       color: AppColors.lightThemeTextColor,
       height: 1.3,
       fontWeight: FontWeight.normal),
   bodyMedium: const TextStyle(
-      fontSize: 14,
+      fontSize: bodyMediumWeb,
       color: AppColors.lightThemeTextColor,
       fontWeight: FontWeight.normal),
 );

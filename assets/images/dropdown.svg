@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13.414" height="22.828" viewBox="0 0 13.414 22.828">
+  <g id="Group_2" data-name="Group 2" transform="translate(0.707 1.414)">
+    <path id="chevron-up" d="M18,15,12,9,6,15" transform="translate(-6 -9)" fill="none" stroke="#000" stroke-width="2"/>
+    <path id="chevron-down" d="M6,9l6,6,6-6" transform="translate(-6 5)" fill="none" stroke="#000" stroke-width="2"/>
+  </g>
+</svg>

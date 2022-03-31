@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/shared_widgets/contact_modal.dart';
 import 'package:portfolio_webapp/shared_widgets/custom_appbar.dart';
 
 class TabletScreen extends StatelessWidget {
@@ -8,13 +9,7 @@ class TabletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.blue,
-            )
-          ],
-        ),
+        child: ContactMeModal(),
       ),
     );
   }

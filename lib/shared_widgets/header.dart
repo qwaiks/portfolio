@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_webapp/config/constants.dart';
+import 'package:portfolio_webapp/config/size_config.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
+import 'package:portfolio_webapp/shared_widgets/contact_modal.dart';
+import 'package:portfolio_webapp/shared_widgets/side_sheet.widget.dart';
 
 class Header extends StatelessWidget {
   const Header({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = isDeviceMobile(context: context);
+    bool isTablet = isDeviceTablet(context: context);
     return Column(
       children: [
         Container(
@@ -14,14 +20,24 @@ class Header extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'KWAKU OWUSU-ANSA',
+                AppString.name.toUpperCase(),
                 style: primaryTextTheme.bodyLarge
                     .copyWith(fontWeight: FontWeight.w800),
               ),
-              Text(
-                'contact me',
-                style: primaryTextTheme.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w800),
+              InkWell(
+                onTap: () {
+                  SideSheet.right(
+                      body: ContactMeModal(),
+                      context: context,
+                      width: isMobile
+                          ? SizeConfig.screenWidth
+                          : SizeConfig.screenWidth * 0.5);
+                },
+                child: Text(
+                  AppString.contactMe,
+                  style: primaryTextTheme.bodyLarge
+                      .copyWith(fontWeight: FontWeight.w800),
+                ),
               ),
             ],
           ),

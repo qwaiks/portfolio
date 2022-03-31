@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^1.0.3
+  url_launcher: ^6.0.20
   widget_marquee: ^0.0.5
 
 
@@ -82,6 +84,9 @@ flutter:
           weight: 200
         - asset: fonts/NeueMachina-Regular.ttf
           weight: 400
+        - asset: fonts/NeueMachina-Ultrabold.ttf
+          weight: 800
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
