@@ -27,7 +27,7 @@ class MainSection extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.only(top: 100, right: 40),
                       child: Image.asset(AppImages.portfolioImage,
-                          fit: isTablet ? BoxFit.fitWidth : BoxFit.cover,
+                          fit: /* isTablet ? BoxFit.fitWidth :*/ BoxFit.cover,
                           height: double.infinity),
                     )),
                 Container(
@@ -53,10 +53,9 @@ class MainSection extends StatelessWidget {
                                       AppString.name,
                                       style: primaryTextTheme.headlineLarge
                                           .copyWith(
-                                              fontSize: getProportionateScreenWidth(
-                                                  isTablet
-                                                      ? 120
-                                                      : 80)),
+                                              fontSize:
+                                                  getProportionateScreenWidth(
+                                                      isTablet ? 120 : 80)),
                                     ),
                                   ),
                                   Utils.horizontalSpacer(),
@@ -70,17 +69,14 @@ class MainSection extends StatelessWidget {
                                 child: Text(AppString.jobTitle,
                                     style:
                                         primaryTextTheme.headlineLarge.copyWith(
-                                      fontSize: getProportionateScreenWidth(isTablet
-                                          ? 100
-                                          : 80),
+                                      fontSize: getProportionateScreenWidth(
+                                          isTablet ? 100 : 80),
                                     )),
                               )
                             ],
                           ),
                         ),
-                        flex: isTablet
-                            ? 2
-                            :3,
+                        flex: isTablet ? 2 : 3,
                       ),
                       Container(
                         height: 3,
@@ -95,7 +91,7 @@ class MainSection extends StatelessWidget {
                                 direction: Axis.horizontal,
                                 children: [
                                   Flexible(
-                                      flex: 2,
+                                      flex: isTablet ? 4 : 2,
                                       child: Column(
                                         children: [
                                           Text(AppString.professionalDesc,
