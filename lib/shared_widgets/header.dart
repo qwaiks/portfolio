@@ -31,7 +31,9 @@ class Header extends StatelessWidget {
                       context: context,
                       width: isMobile
                           ? SizeConfig.screenWidth
-                          : SizeConfig.screenWidth * 0.5);
+                          : isTablet
+                              ? SizeConfig.screenWidth * 0.9
+                              : SizeConfig.screenWidth * 0.5);
                 },
                 child: Text(
                   AppString.contactMe,
