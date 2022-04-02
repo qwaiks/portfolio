@@ -17,7 +17,7 @@ class ContactMeModal extends StatefulWidget {
 
 class _ContactMeModalState extends State<ContactMeModal> {
   String selectedInterest;
-  String selectedBudget;
+  String selectedPlatform;
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +111,12 @@ class _ContactMeModalState extends State<ContactMeModal> {
 
     final contactInterests = CustomDropdown(
       initalValue: selectedInterest,
-      list: [],
+      list: const [
+        {'name': 'Consultation'},
+        {'name': 'General inquiry'},
+        {'name': 'Work'},
+        {'name': 'Web projects'},
+      ],
       onChanged: (value) {
         setState(() {
           selectedInterest = value;
@@ -119,22 +124,28 @@ class _ContactMeModalState extends State<ContactMeModal> {
       },
       itemValue: 'name',
       itemLabel: 'name',
-      hint: 'Select interest',
+      hint: 'Im interested in ...',
       selectedValue: selectedInterest,
     );
 
-    final contactBudget = CustomDropdown(
-      list: [],
+    final contactPlatform = CustomDropdown(
+      list: const [
+        {'name':'Mobile'},
+        {'name':'Web'},
+        {'name':'Backend'},
+        {'name': 'Fullstack'},
+        {'name':'Not sure yet 🙈'},
+      ],
       itemValue: 'name',
       itemLabel: 'name',
-      initalValue: selectedBudget,
-      selectedValue: selectedBudget,
+      initalValue: selectedPlatform,
+      selectedValue: selectedPlatform,
       onChanged: (value) {
         setState(() {
-          selectedBudget = value;
+          selectedPlatform = value;
         });
       },
-      hint: 'Select budget',
+      hint: 'Related platform',
     );
 
     final button = CustomButton(
@@ -155,7 +166,7 @@ class _ContactMeModalState extends State<ContactMeModal> {
             Utils.verticalSpacer(space: 10),
             contactInterests,
             Utils.verticalSpacer(),
-            contactBudget
+            contactPlatform
           ],
         )),
         Utils.horizontalSpacer(),
@@ -175,7 +186,7 @@ class _ContactMeModalState extends State<ContactMeModal> {
         Utils.verticalSpacer(space: 12),
         contactInterests,
         Utils.verticalSpacer(),
-        contactBudget,
+        contactPlatform,
         Utils.verticalSpacer(space: 16),
         projectDesc,
         Utils.verticalSpacer(space: 16),

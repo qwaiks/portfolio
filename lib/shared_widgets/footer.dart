@@ -47,7 +47,11 @@ class Footer extends StatelessWidget {
             onTap: () => SideSheet.right(
                 body: ContactMeModal(),
                 context: context,
-                width: isMobile ? SizeConfig.screenWidth : SizeConfig.screenWidth * 0.5))
+                width: isMobile
+                    ? SizeConfig.screenWidth
+                    : isTablet
+                        ? SizeConfig.screenWidth * 0.9
+                        : SizeConfig.screenWidth * 0.5))
       ],
     );
 
@@ -88,7 +92,11 @@ class Footer extends StatelessWidget {
                 onTap: () => SideSheet.right(
                     body: ContactMeModal(),
                     context: context,
-                    width: isMobile ? SizeConfig.screenWidth : SizeConfig.screenWidth * 0.5))
+                    width: isMobile
+                        ? SizeConfig.screenWidth
+                        : isTablet
+                            ? SizeConfig.screenWidth * 0.9
+                            : SizeConfig.screenWidth * 0.5))
           ],
         ),
       ],
@@ -111,7 +119,10 @@ class Footer extends StatelessWidget {
     );
   }
 
-  Widget externalLink({Function onTap, String title, EdgeInsets padding = const EdgeInsets.symmetric(vertical: 8)}) {
+  Widget externalLink(
+      {Function onTap,
+      String title,
+      EdgeInsets padding = const EdgeInsets.symmetric(vertical: 8)}) {
     return InkWell(
       onTap: onTap,
       child: Padding(
