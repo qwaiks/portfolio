@@ -85,13 +85,14 @@ class AppString {
   static const name = 'Kwaku Owusu-Ansa';
   static String jobTitle = 'Mobile Engineer \nbased in Accra,\nGhana';
 
-  static String professionalDesc = 'With over 3 years experience in building'
+  static String professionalDesc = 'With over 4 years experience in building'
       ' digital products that users love and cherish, I have worked mostly with '
-      'startups in Food tech, Agri-tech, Health, Fin-tech, Social Media & Education.';
+      'startups in Prop tech, Agri-tech, Emergency, Fin-tech, Social Media & Entertainment.';
 
-  static String professionalDescCont = 'I am the founder of UX Campus: An Non '
-      'Profit that seeks to inspire people to fall in love with UX Design, by '
-      'organising free 1-2 day workshops across Ghana.';
+  static String professionalDescCont = 'I love to translate designs into clean, '
+      'elegant, functional and responsive User Interfaces. I have industry '
+      'experience building websites and web applications using Flutter, Android, '
+      'iOS and Firebase and quite recently Go.';
 
   static const welcomeName = "Hello,\nI'm Kwaku\nNtim";
   static const welcomeDesc =
