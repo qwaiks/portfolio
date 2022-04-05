@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_webapp/config/constants.dart';
 import 'package:portfolio_webapp/config/theme.dart';
 import 'package:portfolio_webapp/config/utils.dart';
+import 'package:portfolio_webapp/models/project.dart';
 import 'package:portfolio_webapp/shared_widgets/custom_chip.dart';
 import 'package:portfolio_webapp/shared_widgets/section_header.dart';
 
@@ -21,31 +22,31 @@ class WorkSection extends StatelessWidget {
             crossAxisSpacing: 150,
             mainAxisExtent:
                 MediaQuery.of(context).size.width < 1350 ? 900 : 1200),
-        itemCount: 5,
+        itemCount: DummyData.projects.length,
         itemBuilder: (ctx, index) {
+          var project = Project.fromJson(DummyData.projects[index]);
           return WorkTile(
             paddingTop: index.isOdd ? 100 : 0,
-            image: AppImages.waCommImage,
-            title: 'GrainMate Mobile',
-            isMobile: isMobile,
-            androidLink: 'adonaodina',
-            iosLink: 'poamdoaimd',
-            desc:
-                'GrainMate app is supercharging African farmers and agribusinesses with the tools and resources they need to get to the next level ⚡️',
+            image: project.image,
+            title: project.title,
+            androidLink: project.links.android,
+            iosLink: project.links.ios,
+            desc: project.desc,
           );
         });
 
     final listViewWork = ListView.builder(
         shrinkWrap: true,
-        itemCount: 2,
+        itemCount: DummyData.projects.length,
         itemBuilder: (context, index) {
+          var project = Project.fromJson(DummyData.projects[index]);
           return WorkTile(
             paddingTop: index.isOdd ? 100 : 0,
-            image: AppImages.waCommImage,
-            title: 'GrainMate Mobile',
-            isMobile: isMobile,
-            desc:
-                'GrainMate app is supercharging African farmers and agribusinesses with the tools and resources they need to get to the next level ⚡️',
+            image: project.image,
+            title: project.title,
+            androidLink: project.links.android,
+            iosLink: project.links.ios,
+            desc: project.desc,
           );
         });
 
@@ -69,7 +70,6 @@ class WorkTile extends StatelessWidget {
   final String androidLink;
   final String iosLink;
   final double paddingTop;
-  final bool isMobile;
 
   const WorkTile(
       {Key key,
@@ -78,12 +78,13 @@ class WorkTile extends StatelessWidget {
       this.title,
       this.androidLink,
       this.desc,
-      this.isMobile,
       this.iosLink})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = isDeviceMobile(context: context);
+
     return Container(
       padding: EdgeInsets.only(top: paddingTop),
       child: Column(
@@ -93,30 +94,31 @@ class WorkTile extends StatelessWidget {
             image,
           ),
           Utils.verticalSpacer(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Visibility(
-                  visible: androidLink != null && androidLink.isNotEmpty,
-                  child: CustomChip(
-                    title: 'Android',
-                    link: androidLink,
-                  )),
-              Visibility(
-                visible: iosLink != null && iosLink.isNotEmpty,
-                child: CustomChip(
-                  title: 'iOS',
-                  link: iosLink,
-                ),
-              )
-            ],
-          ),
-          Utils.verticalSpacer(),
           Padding(
             padding: isMobile ? const EdgeInsets.all(30) : EdgeInsets.zero,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Utils.verticalSpacer(),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Visibility(
+                        visible: androidLink != null && androidLink.isNotEmpty,
+                        child: CustomChip(
+                          title: 'Android',
+                          link: androidLink,
+                        )),
+                    Visibility(
+                      visible: iosLink != null && iosLink.isNotEmpty,
+                      child: CustomChip(
+                        title: 'iOS',
+                        link: iosLink,
+                      ),
+                    )
+                  ],
+                ),
+                Utils.verticalSpacer(),
                 Text(
                   title,
                   style: primaryTextTheme.titleLarge.copyWith(

@@ -24,21 +24,23 @@ class Header extends StatelessWidget {
                 style: primaryTextTheme.bodyLarge
                     .copyWith(fontWeight: FontWeight.w800),
               ),
-              InkWell(
-                onTap: () {
-                  SideSheet.right(
-                      body: ContactMeModal(),
-                      context: context,
-                      width: isMobile
-                          ? SizeConfig.screenWidth
-                          : isTablet
-                              ? SizeConfig.screenWidth * 0.9
-                              : SizeConfig.screenWidth * 0.5);
-                },
-                child: Text(
-                  AppString.contactMe,
-                  style: primaryTextTheme.bodyLarge
-                      .copyWith(fontWeight: FontWeight.w800),
+              Flexible(
+                child: InkWell(
+                  onTap: () {
+                    SideSheet.right(
+                        body: ContactMeModal(),
+                        context: context,
+                        width: isMobile
+                            ? SizeConfig.screenWidth
+                            : isTablet
+                                ? SizeConfig.screenWidth * 0.9
+                                : SizeConfig.screenWidth * 0.5);
+                  },
+                  child: Text(
+                    AppString.contactMe,
+                    style: primaryTextTheme.bodyLarge
+                        .copyWith(fontWeight: FontWeight.w800),
+                  ),
                 ),
               ),
             ],

@@ -28,8 +28,28 @@
 
   <title>Kwaku Owusu-Ansa | Porfolio</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex; /* Default Axis is X*/
+        justify-content: center; /* Main Axis */
+        align-items: center; /* Cross Axis */
+      }
+      .indicator{
+        width: 20vw;
+      }
+      @media only screen and (max-width: 600px) {
+        .indicator{
+          width: 50vw;
+        }
+      }
+  </style>
 </head>
-<body>
+<body style="overflow: hidden; background-color:black;">
+  <div id="loading_indicator" class="container">
+    <img class="indicator" src="./assets/loading.gif">
+  </div>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
