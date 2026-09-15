@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- Template for public/og.png (1200×630 social preview). Rendered by `npm run og`. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        position: relative;
+        background:
+          radial-gradient(60% 80% at 100% 0%, rgba(16, 185, 129, 0.22), transparent 60%),
+          #0b0e13;
+        color: #ece8e1;
+        font-family: 'Inter', system-ui, sans-serif;
+        padding: 72px 80px;
+      }
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px);
+        background-size: 32px 32px;
+        -webkit-mask-image: linear-gradient(to right, transparent 20%, #000 90%);
+      }
+      .content { position: relative; height: 100%; display: flex; flex-direction: column; }
+      .hello { font-family: 'JetBrains Mono', monospace; font-size: 26px; color: #10b981; margin: 0 0 18px; }
+      h1 {
+        margin: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 104px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 0.98;
+      }
+      h1 span { color: #10b981; }
+      .role {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        align-self: flex-start;
+        margin-top: 34px;
+        padding: 10px 22px 10px 16px;
+        border: 1.5px solid #2b3444;
+        border-radius: 999px;
+        background: #11151c;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 26px;
+      }
+      .role i { width: 14px; height: 14px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 6px rgba(16,185,129,.18); }
+      .stack { margin-top: 26px; font-size: 30px; color: #9199a5; }
+      .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 24px;
+        color: #5a6372;
+      }
+      .foot b { color: #ece8e1; font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <p class="hello">hello, I’m</p>
+      <h1>Kwaku<br />Owusu-Ansa<span>.</span></h1>
+      <p class="role"><i></i>Senior Mobile Engineer</p>
+      <p class="stack">Flutter · iOS · Android · Next.js · Node.js</p>
+      <div class="foot">
+        <span>Accra, Ghana</span>
+        <b data-domain>ntim-dev.web.app</b>
+      </div>
+    </div>
+    <script>
+      // `npm run og` passes ?domain=… from SITE_URL in astro.config.mjs
+      const d = new URLSearchParams(location.search).get('domain');
+      if (d) document.querySelector('[data-domain]').textContent = d;
+    </script>
+  </body>
+</html>

@@ -14,8 +14,13 @@ export const profile = {
   phone: '+233 20 904 7863', // shown on the résumé only
   linkedin: 'https://www.linkedin.com/in/kwaku-owusu-ansa',
   github: 'https://github.com/qwaiks',
+  x: 'https://x.com/ntim_cx',
+  xHandle: 'ntim_cx',
   // Generated from src/pages/resume.astro — run `npm run resume` after editing.
   cv: '/Kwaku-Owusu-Ansa-Resume.pdf',
+  // Shown in Google results and link previews. Keep it around 150–160 characters.
+  seoDescription:
+    'Kwaku Owusu-Ansa is a Senior Mobile Engineer in Accra, Ghana, building Flutter, iOS and Android apps and Next.js / Node.js backends used by thousands every day.',
   // Paragraphs may contain <strong> for highlighted words.
   about: [
     `I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>${yearsOfExperience} years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.`,

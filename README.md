@@ -34,6 +34,11 @@ on the project in `profile.ts`; otherwise a generated tile is shown.
 
 Layout inspired by [Brittany Chiang](https://brittanychiang.com) (credited in the footer).
 
+## SEO
+
+Titles, descriptions, canonical URLs, sitemap, robots.txt, structured data and the social preview image are built in.
+See [docs/SEO.md](docs/SEO.md) for how it works, connecting a custom domain, and Google Search Console.
+
 ## Deploy
 
 The site is hosted on Firebase Hosting (project `ntim-dev`) via GitHub Actions:

@@ -10,9 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "resume": "astro build && node scripts/resume-pdf.mjs"
+    "resume": "astro build && node scripts/resume-pdf.mjs",
+    "og": "node scripts/og-image.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.2"
   },
   "allowScripts": {
