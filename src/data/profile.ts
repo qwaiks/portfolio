@@ -1,5 +1,10 @@
 // All site content lives here. Edit this file to update the portfolio.
 
+// Started working in 2017. Counted in whole years that have definitely passed (start month isn't tracked),
+// and recalculated on every build so the site stays accurate after each deploy.
+const careerStartYear = 2017;
+export const yearsOfExperience = new Date().getFullYear() - careerStartYear - 1;
+
 export const profile = {
   name: 'Kwaku Owusu-Ansa',
   role: 'Senior Mobile Engineer',
@@ -13,8 +18,8 @@ export const profile = {
   cv: '/Kwaku-Owusu-Ansa-Resume.pdf',
   // Paragraphs may contain <strong> for highlighted words.
   about: [
-    'I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>5 years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> services and in-house tooling behind them.',
-    'Currently, I’m a Mobile Engineer at <strong>Ruvik Group</strong>, where I lead a multi-platform photo app across mobile and web — from pixel-perfect UI to payments, behavioural tracking and analytics.',
+    `I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>${yearsOfExperience} years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.`,
+    'Currently, I’m a Senior Mobile Engineer at <strong>StreamTV Group</strong>, where I build a Flutter app used by <strong>more than 20K daily active users</strong> — real-time live-stream interactions, sound alerts, text-to-speech and subscriptions — along with the Next.js platform and backend that power it.',
     'Along the way I’ve built software that reached <strong>over 1.5 million farmers</strong> in Ghana, helped health coaches in California support their clients, and connected building managers and tenants in London. I also enjoy mentoring junior engineers and building shared packages that make whole teams faster.',
   ],
 };
@@ -23,7 +28,16 @@ export type Link = { label: string; href: string };
 
 export const experience = [
   {
-    period: '2023 — Present',
+    period: '2025 — Present',
+    role: 'Senior Mobile Engineer',
+    company: 'StreamTV Group',
+    location: 'Steyr, Austria',
+    summary:
+      'Build and maintain the Flutter iOS/Android app for TikTok LIVE creators, processing real-time events like gifts, follows and comments to drive sound alerts, text-to-speech and notifications. Develop the Next.js web platform and its backend — creator dashboards, API routes, authentication and integrations — and run subscription and monetisation infrastructure with RevenueCat and Superwall.',
+    tags: ['Flutter', 'Next.js', 'Real-time events', 'RevenueCat', 'Superwall'],
+  },
+  {
+    period: '2023 — 2025',
     role: 'Mobile Engineer',
     company: 'Ruvik Group',
     location: 'Alberta, Canada',
@@ -91,16 +105,28 @@ export const projects: {
   links: Link[];
 }[] = [
   {
-    name: 'Jubley',
+    name: 'TikFinity Mobile',
+    year: '2025',
+    description: 'A mobile app for TikTok LIVE creators with real-time sound alerts, text-to-speech and viewer interactions that keep running in the background.',
+    role: 'Senior Mobile Engineer',
+    tags: ['Flutter', 'iOS', 'Android', 'RevenueCat', 'Superwall'],
+    color: '#fe2c55',
+    links: [
+      { label: 'Website', href: 'https://tikfinity.zerody.one/mobile/' },
+      { label: 'App Store', href: 'https://apps.apple.com/us/app/tikfinity-mobile-alerts-tts/id6578448936' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.streamtv.tikstream' },
+    ],
+  },
+  {
+    name: 'AsiaFlare & LatinFlare',
     year: '2024',
-    description: 'A dating app built to bring people together, available on iOS, Android and the web.',
+    description: 'Dating apps connecting singles across Asia and Latin America.',
     role: 'Full Stack Mobile Developer',
     tags: ['Flutter', 'iOS', 'Android', 'Backend'],
-    color: '#e2584d',
+    color: '#a855f7',
     links: [
-      { label: 'Website', href: 'https://jubley.com' },
-      { label: 'App Store', href: 'https://apps.apple.com/us/app/jubley/id6465207276' },
-      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.jubley.app' },
+      { label: 'AsiaFlare', href: 'https://asiaflareapp.com/' },
+      { label: 'LatinFlare', href: 'https://latinflareapp.com/' },
     ],
   },
   {
@@ -113,6 +139,19 @@ export const projects: {
     links: [
       { label: 'Website', href: 'https://mybestpic.com' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mybestpic.twa' },
+    ],
+  },
+  {
+    name: 'Trip o’clock',
+    year: '2022',
+    description: 'An AI-powered travel planner with itineraries, group chat, expense tracking, travel maps and eSIMs.',
+    role: 'Mobile Developer',
+    tags: ['iOS', 'Android', 'AI'],
+    color: '#22b8cf',
+    links: [
+      { label: 'Website', href: 'https://tripoclock.com/' },
+      { label: 'App Store', href: 'https://apps.apple.com/us/app/trip-oclock-travel-planner/id1661002132' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mizormor.traveler_app' },
     ],
   },
   {
@@ -129,13 +168,11 @@ export const projects: {
     year: '2021',
     description: 'A social network for buildings that connects building managers and tenants.',
     role: 'Lead Flutter Engineer',
-    tags: ['Flutter', 'iOS', 'Android'],
+    tags: ['Flutter', 'Android'],
     color: '#5b8def',
     links: [
-      { label: 'Admin · iOS', href: 'https://apps.apple.com/gh/app/wacommunicate-admin/id1527069571' },
-      { label: 'Cityzen · iOS', href: 'https://apps.apple.com/lt/app/wacommunicate-cityzen/id1527069282' },
-      { label: 'Pro · Android', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.pro' },
-      { label: 'Gratis · Android', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.gratis' },
+      { label: 'Pro', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.pro' },
+      { label: 'Gratis', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.gratis' },
     ],
   },
 ];
@@ -149,10 +186,23 @@ export const archive: {
   link?: string;
 }[] = [
   {
+    year: '2025',
+    name: 'TikFinity Mobile',
+    madeAt: 'StreamTV Group',
+    tags: ['Flutter', 'iOS', 'Android', 'RevenueCat'],
+    link: 'https://tikfinity.zerody.one/mobile/',
+  },
+  {
     year: '2024',
-    name: 'Jubley',
+    name: 'AsiaFlare',
     tags: ['Flutter', 'iOS', 'Android', 'Backend'],
-    link: 'https://jubley.com',
+    link: 'https://asiaflareapp.com/',
+  },
+  {
+    year: '2024',
+    name: 'LatinFlare',
+    tags: ['Flutter', 'iOS', 'Android', 'Backend'],
+    link: 'https://latinflareapp.com/',
   },
   {
     year: '2023',
@@ -160,6 +210,12 @@ export const archive: {
     madeAt: 'Ruvik Group',
     tags: ['Flutter', 'Web', 'Payments', 'Analytics'],
     link: 'https://mybestpic.com',
+  },
+  {
+    year: '2022',
+    name: 'Trip o’clock',
+    tags: ['iOS', 'Android', 'AI'],
+    link: 'https://tripoclock.com/',
   },
   {
     year: '2022',
@@ -194,31 +250,10 @@ export const archive: {
   },
   {
     year: '2021',
-    name: 'WaCommunicate Admin',
-    madeAt: 'Walulel',
-    tags: ['Flutter', 'iOS'],
-    link: 'https://apps.apple.com/gh/app/wacommunicate-admin/id1527069571',
-  },
-  {
-    year: '2021',
-    name: 'WaCommunicate Cityzen',
-    madeAt: 'Walulel',
-    tags: ['Flutter', 'iOS'],
-    link: 'https://apps.apple.com/lt/app/wacommunicate-cityzen/id1527069282',
-  },
-  {
-    year: '2021',
-    name: 'WaCommunicate Pro',
+    name: 'WaCommunicate',
     madeAt: 'Walulel',
     tags: ['Flutter', 'Android'],
     link: 'https://play.google.com/store/apps/details?id=com.wacommunicate.pro',
-  },
-  {
-    year: '2021',
-    name: 'WaCommunicate Gratis',
-    madeAt: 'Walulel',
-    tags: ['Flutter', 'Android'],
-    link: 'https://play.google.com/store/apps/details?id=com.wacommunicate.gratis',
   },
   {
     year: '2021',
@@ -234,7 +269,7 @@ export const archive: {
   },
 ];
 
-export const skills = ['Flutter', 'Dart', 'Kotlin', 'Swift', 'Android', 'iOS', 'Node.js', 'JavaScript', 'Firebase', 'SQL / NoSQL', 'Figma', 'Adobe XD'];
+export const skills = ['Flutter', 'Dart', 'Kotlin', 'Swift', 'Android', 'iOS', 'Next.js', 'Node.js', 'JavaScript', 'GraphQL', 'MySQL', 'Firebase', 'RevenueCat', 'Superwall', 'SQL / NoSQL', 'Figma'];
 
 export const education = {
   degree: 'BSc. Information Technology',
@@ -244,16 +279,21 @@ export const education = {
 
 // Content for the printable résumé (src/pages/resume.astro).
 export const resume = {
-  summary: 'Senior mobile engineer building user-centric apps with Flutter, native Android & iOS, and Node.js backends',
+  summary: `Senior mobile engineer with ${yearsOfExperience}+ years of experience building user-centric apps with Flutter, native Android & iOS, and Next.js / Node.js backends`,
+  // How many projects (from the top of `projects`) to list on the résumé.
+  projectCount: 4,
   experience: [
     {
-      role: 'Fullstack Mobile Engineer',
-      company: 'StreamTV',
-      period: 'Mar 2025 — Present',
+      role: 'Senior Mobile Engineer',
+      company: 'StreamTV Group',
+      period: 'Apr 2025 — Present',
       points: [
-        'Lead development of a multi-platform mobile and web app that lets users create, view, and rate photos based on individual preferences',
-        'Translate high-fidelity mockups into responsive mobile code that performs across devices and screen sizes, backed by comprehensive functionality tests',
-        'Integrate secure payment gateways, behavioural tracking, and analytics tools to improve monetisation and drive data-informed decisions',
+        'Built and maintained the Flutter iOS/Android mobile application, delivering real-time TikTok LIVE interactions, sound alerts, Text-to-Speech, notifications, subscriptions and creator engagement features',
+        'Developed features across the Next.js web platform, including creator dashboards, account management, configuration and subscription-related functionality',
+        'Built and integrated backend functionality within the Next.js application, including API routes, server-side business logic, authentication, creator configuration, subscription flows and integrations with external services',
+        'Worked with real-time TikTok LIVE event streams, processing events such as gifts, follows, subscriptions, comments, shares and viewer interactions to trigger creator experiences',
+        'Developed the audio/alert pipeline, supporting custom sounds, Text-to-Speech and event-based playback for live streams',
+        'Implemented and maintained subscription and monetization infrastructure using RevenueCat and Superwall, including entitlements, trials, paywalls, promotional campaigns and purchase flows',
       ],
     },
     {
@@ -261,9 +301,8 @@ export const resume = {
       company: 'Ruvik Group',
       period: 'Mar 2023 — Feb 2025',
       points: [
-        'Lead development of a multi-platform mobile and web app that lets users create, view, and rate photos based on individual preferences',
-        'Translate high-fidelity mockups into responsive mobile code that performs across devices and screen sizes, backed by comprehensive functionality tests',
-        'Integrate secure payment gateways, behavioural tracking, and analytics tools to improve monetisation and drive data-informed decisions',
+        'Led development of a multi-platform mobile and web app that lets users create, view, and rate photos based on individual preferences',
+        'Integrated secure payment gateways, behavioural tracking, and analytics tools to improve monetisation and drive data-informed decisions',
       ],
     },
     {
@@ -271,10 +310,8 @@ export const resume = {
       company: 'Oben Health',
       period: 'Aug 2022 — Aug 2023',
       points: [
-        'Developed a mobile solution empowering users to curb, reverse, and prevent adverse health conditions',
-        'Built a Flutter web dashboard enabling health coaches to efficiently support their clients',
-        'Rebuilt the Node.js backend for seamless registration and onboarding, with improved API endpoints for the mobile app',
-        'Created and maintained an in-house Flutter/Dart package used by the entire team',
+        'Developed a mobile solution and a Flutter web dashboard empowering users and health coaches to curb, reverse, and prevent adverse health conditions',
+        'Rebuilt the Node.js backend for seamless registration and onboarding, and maintained an in-house Flutter/Dart package used by the entire team',
       ],
     },
     {
@@ -282,8 +319,7 @@ export const resume = {
       company: 'BroadSpectrum Digital Payments',
       period: 'Jan 2022 — Mar 2023',
       points: [
-        'Led development of a farmer data collection and aggregation solution impacting over 1.5 million farmers in Ghana',
-        'Revamped the produce collection system and integrated it with the government’s farmer subsidy programme',
+        'Led development of a farmer data collection and aggregation solution impacting over 1.5 million farmers in Ghana, integrated with the government’s farmer subsidy programme',
         'Mentored junior engineers and maintained a widely used in-house Flutter/Dart package',
       ],
     },
@@ -292,8 +328,7 @@ export const resume = {
       company: 'Walulel',
       period: 'Jan 2021 — Feb 2022',
       points: [
-        'Led development of the WaCommunicate admin and free user apps for users in Ghana and the UK',
-        'Authored UI and functionality tests to ensure code quality and reliability',
+        'Led development of the WaCommunicate admin and free user apps for users in Ghana and the UK, including UI and functionality tests',
         'Managed deployment, publishing, and versioning on the App Store and Google Play',
       ],
     },
@@ -301,10 +336,7 @@ export const resume = {
       role: 'Mobile Engineer',
       company: 'Upwork',
       period: 'Jan 2021 — Feb 2022',
-      points: [
-        'Maintained and developed key features for an existing restaurant application',
-        'Built responsive mobile and web experiences with Flutter and Dart from high-fidelity mockups',
-      ],
+      points: ['Maintained and developed key features for an existing restaurant application with Flutter and Dart'],
     },
     {
       role: 'Mobile Engineer',
@@ -312,14 +344,13 @@ export const resume = {
       period: 'Mar 2018 — Feb 2020',
       points: [
         'Designed and developed mobile apps for diverse clients using Kotlin, Java, and Firebase in Agile/Scrum/Kanban teams',
-        'Delivered against product roadmap milestones and strict release plans, and optimised the performance of existing solutions',
       ],
     },
   ],
   skills: [
-    { title: 'Languages', items: 'Dart, Kotlin, Swift, Java, JavaScript, SQL' },
-    { title: 'Frameworks & Platforms', items: 'Flutter, Android, iOS, Node.js, Firebase' },
-    { title: 'Tools & Practices', items: 'Git, Figma, Adobe XD, Testing, Debugging, App Store & Google Play releases' },
+    { title: 'Languages', items: 'Dart, JavaScript, Kotlin, Swift, Java, SQL, GraphQL' },
+    { title: 'Frameworks & Platforms', items: 'Flutter, Next.js, Node.js, Android, iOS, Firebase, MySQL' },
+    { title: 'Tools & Services', items: 'RevenueCat, Superwall, Git, Figma, Adobe XD, App Store & Google Play releases' },
   ],
   professional: 'Team leadership, mentorship, strategic planning, process improvement, presentation',
 };
