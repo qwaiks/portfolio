@@ -1,5 +1,10 @@
 // All site content lives here. Edit this file to update the portfolio.
 
+// Started working in 2017. Counted in whole years that have definitely passed (start month isn't tracked),
+// and recalculated on every build so the site stays accurate after each deploy.
+const careerStartYear = 2017;
+export const yearsOfExperience = new Date().getFullYear() - careerStartYear - 1;
+
 export const profile = {
   name: 'Kwaku Owusu-Ansa',
   role: 'Senior Mobile Engineer',
@@ -13,7 +18,7 @@ export const profile = {
   cv: '/Kwaku-Owusu-Ansa-Resume.pdf',
   // Paragraphs may contain <strong> for highlighted words.
   about: [
-    'I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>5 years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.',
+    `I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>${yearsOfExperience} years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.`,
     'Currently, I’m a Senior Mobile Engineer at <strong>StreamTV Group</strong>, where I build a Flutter app used by <strong>more than 20K daily active users</strong> — real-time live-stream interactions, sound alerts, text-to-speech and subscriptions — along with the Next.js platform and backend that power it.',
     'Along the way I’ve built software that reached <strong>over 1.5 million farmers</strong> in Ghana, helped health coaches in California support their clients, and connected building managers and tenants in London. I also enjoy mentoring junior engineers and building shared packages that make whole teams faster.',
   ],
@@ -264,7 +269,7 @@ export const archive: {
   },
 ];
 
-export const skills = ['Flutter', 'Dart', 'Kotlin', 'Swift', 'Android', 'iOS', 'Next.js', 'Node.js', 'JavaScript', 'Firebase', 'RevenueCat', 'Superwall', 'SQL / NoSQL', 'Figma'];
+export const skills = ['Flutter', 'Dart', 'Kotlin', 'Swift', 'Android', 'iOS', 'Next.js', 'Node.js', 'JavaScript', 'GraphQL', 'MySQL', 'Firebase', 'RevenueCat', 'Superwall', 'SQL / NoSQL', 'Figma'];
 
 export const education = {
   degree: 'BSc. Information Technology',
@@ -274,7 +279,7 @@ export const education = {
 
 // Content for the printable résumé (src/pages/resume.astro).
 export const resume = {
-  summary: 'Senior mobile engineer building user-centric apps with Flutter, native Android & iOS, and Next.js / Node.js backends',
+  summary: `Senior mobile engineer with ${yearsOfExperience}+ years of experience building user-centric apps with Flutter, native Android & iOS, and Next.js / Node.js backends`,
   // How many projects (from the top of `projects`) to list on the résumé.
   projectCount: 4,
   experience: [
@@ -343,8 +348,8 @@ export const resume = {
     },
   ],
   skills: [
-    { title: 'Languages', items: 'Dart, JavaScript, Kotlin, Swift, Java, SQL' },
-    { title: 'Frameworks & Platforms', items: 'Flutter, Next.js, Node.js, Android, iOS, Firebase' },
+    { title: 'Languages', items: 'Dart, JavaScript, Kotlin, Swift, Java, SQL, GraphQL' },
+    { title: 'Frameworks & Platforms', items: 'Flutter, Next.js, Node.js, Android, iOS, Firebase, MySQL' },
     { title: 'Tools & Services', items: 'RevenueCat, Superwall, Git, Figma, Adobe XD, App Store & Google Play releases' },
   ],
   professional: 'Team leadership, mentorship, strategic planning, process improvement, presentation',
