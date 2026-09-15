@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile, archive } from '../data/profile';
+
+// Show a short, readable host for each link, e.g. "jubley.com" or "apps.apple.com".
+const host = (url: string) => new URL(url).hostname.replace(/^www\./, '');
+
+// Filter options: the most common tags across the archive.
+const counts = new Map<string, number>();
+archive.forEach((p) => p.tags.forEach((t) => counts.set(t, (counts.get(t) ?? 0) + 1)));
+const filters = [...counts.entries()]
+  .filter(([, n]) => n > 1)
+  .sort((a, b) => b[1] - a[1])
+  .map(([t]) => t)
+  .slice(0, 6);
+---
+
+<Layout title={`Archive | ${profile.name}`}>
+  <div class="shell">
+    <header>
+      <a class="back" data-intro style="--i:0" href="/"><span class="arrow">←</span> back to {profile.name}</a>
+      <p class="kicker" data-intro style="--i:1">// archive</p>
+      <h1 data-intro style="--i:2">Everything I’ve shipped<span class="dot">.</span></h1>
+      <p class="sub" data-intro style="--i:3">
+        A running list of apps, dashboards, APIs and internal tools — <span data-count>{archive.length} projects</span>.
+      </p>
+      <div class="filters" data-intro style="--i:4" role="group" aria-label="Filter by technology">
+        <button type="button" class="filter on" data-filter="">All</button>
+        {
+          filters.map((f) => (
+            <button type="button" class="filter" data-filter={f}>
+              {f}
+            </button>
+          ))
+        }
+      </div>
+    </header>
+
+    <div class="table-wrap" data-intro style="--i:5">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Project</th>
+            <th class="lg">Made at</th>
+            <th class="md">Built with</th>
+            <th class="sm">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            archive.map((p, i) => (
+              <tr class="row-in" style={`--r:${i}`} data-tags={p.tags.join('|')}>
+                <td class="year">{p.year}</td>
+                <td class="name">
+                  {p.link ? (
+                    <a class="name-link" href={p.link} target="_blank" rel="noopener">
+                      {p.name}
+                      <span class="mobile-arrow"> ↗</span>
+                    </a>
+                  ) : (
+                    p.name
+                  )}
+                  <span class="made-mobile">{p.madeAt}</span>
+                </td>
+                <td class="lg made">{p.madeAt ?? '—'}</td>
+                <td class="md">
+                  <ul class="tags">
+                    {p.tags.map((t) => (
+                      <li class="tag">{t}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td class="sm link">
+                  {p.link && (
+                    <a href={p.link} target="_blank" rel="noopener">
+                      {host(p.link)} ↗
+                    </a>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .shell {
+    max-width: 1140px;
+    min-height: 100vh;
+    margin-inline: auto;
+    padding: 48px 24px 80px;
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding: 80px 48px 96px;
+    }
+  }
+
+  .back {
+    display: inline-flex;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .back .arrow {
+    transition: transform 0.2s ease;
+  }
+  .back:hover .arrow {
+    transform: translateX(-4px);
+  }
+  .kicker {
+    margin: 40px 0 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    color: var(--ink);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+  .dot {
+    color: var(--accent);
+  }
+  .sub {
+    margin: 14px 0 0;
+    max-width: 560px;
+  }
+  .sub span {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .filter {
+    font: inherit;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter:hover {
+    color: var(--ink);
+    border-color: var(--faint);
+  }
+  .filter.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  .table-wrap {
+    margin-top: 32px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--surface) 85%, transparent);
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  th {
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+  }
+  .row-in {
+    animation: row-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--r) * 45ms + 450ms);
+  }
+  @keyframes row-in {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+  }
+  .row-flash {
+    animation: row-flash 0.35s ease both;
+  }
+  @keyframes row-flash {
+    from {
+      opacity: 0;
+    }
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  tbody tr:hover td {
+    background: rgba(var(--accent-rgb), 0.04);
+  }
+  .year {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--faint);
+    white-space: nowrap;
+    padding-top: 18px;
+  }
+  .name {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+    padding-top: 17px;
+  }
+  .name-link:hover {
+    color: var(--accent);
+  }
+  .made-mobile {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+  .made {
+    font-size: 14px;
+    padding-top: 18px;
+  }
+  .tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .link {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    white-space: nowrap;
+    padding-top: 19px;
+  }
+  .link a:hover {
+    color: var(--accent);
+  }
+
+  /* Progressive columns */
+  .lg,
+  .md,
+  .sm {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .sm {
+      display: table-cell;
+    }
+    .mobile-arrow {
+      display: none;
+    }
+  }
+  @media (min-width: 768px) {
+    .md {
+      display: table-cell;
+    }
+  }
+  @media (min-width: 1024px) {
+    .lg {
+      display: table-cell;
+    }
+    .made-mobile {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const rows = document.querySelectorAll<HTMLTableRowElement>('tbody tr');
+  const count = document.querySelector('[data-count]');
+
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.filter ?? '';
+      buttons.forEach((b) => b.classList.toggle('on', b === btn));
+      let shown = 0;
+      rows.forEach((row) => {
+        const match = !tag || (row.dataset.tags ?? '').split('|').includes(tag);
+        row.hidden = !match;
+        // Re-trigger a quick fade so filtering feels responsive
+        row.classList.remove('row-in', 'row-flash');
+        if (match) {
+          void row.offsetWidth;
+          row.classList.add('row-flash');
+        }
+        if (match) shown++;
+      });
+      if (count) count.textContent = tag ? `${shown} of ${rows.length} projects` : `${rows.length} projects`;
+    })
+  );
+</script>
