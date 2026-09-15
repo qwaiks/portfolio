@@ -15,7 +15,10 @@ const filters = [...counts.entries()]
   .slice(0, 6);
 ---
 
-<Layout title={`Archive | ${profile.name}`}>
+<Layout
+  title={`Project Archive · ${profile.name}, Mobile & Flutter Engineer`}
+  description={`Every app, dashboard, API and internal tool ${profile.name} has built — Flutter, iOS, Android, Next.js and Node.js projects from ${archive.at(-1)?.year} to today.`}
+>
   <div class="shell">
     <header>
       <a class="back" data-intro style="--i:0" href="/"><span class="arrow">←</span> back to {profile.name}</a>

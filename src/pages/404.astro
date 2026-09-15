@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { profile } from '../data/profile';
 ---
 
-<Layout title={`Page not found | ${profile.name}`}>
+<Layout title={`Page not found · ${profile.name}`} noindex>
   <main class="notfound">
     <p class="code" data-intro style="--i:0">// 404</p>
     <h1 data-intro style="--i:1">This page doesn’t exist<span>.</span></h1>

@@ -1,12 +1,65 @@
 ---
 import '../styles/global.css';
-import { profile } from '../data/profile';
+import { profile, experience, education, skills } from '../data/profile';
 
 interface Props {
+  /** Full <title>. Defaults to the home page title. */
   title?: string;
+  /** Meta description (aim for ~150–160 characters). */
+  description?: string;
+  /** Keep this page out of search results (e.g. 404). */
+  noindex?: boolean;
+  /** Add Person + WebSite structured data (home page only). */
+  structuredData?: boolean;
 }
-const { title = `${profile.name} — ${profile.role}` } = Astro.props;
-const description = `${profile.role} in ${profile.location}. ${profile.tagline}`;
+
+const {
+  // Google shows roughly the first 60 characters — lead with the name and what you do.
+  title = `${profile.name} — Senior Mobile & Flutter Engineer`,
+  description = profile.seoDescription,
+  noindex = false,
+  structuredData = false,
+} = Astro.props;
+
+// Canonical URL on the real domain, without `.html` or a trailing slash.
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/(.)\/$/, '$1');
+const canonical = new URL(path || '/', Astro.site).href;
+const ogImage = new URL('/og.png', Astro.site).href;
+
+const current = experience[0];
+const jsonLd = structuredData
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Person',
+          '@id': `${Astro.site}#person`,
+          name: profile.name,
+          alternateName: profile.alternateNames,
+          givenName: profile.givenName,
+          additionalName: profile.additionalName,
+          familyName: profile.familyName,
+          url: Astro.site?.href,
+          image: ogImage,
+          jobTitle: profile.role,
+          description,
+          email: `mailto:${profile.email}`,
+          address: { '@type': 'PostalAddress', addressLocality: 'Accra', addressCountry: 'GH' },
+          worksFor: { '@type': 'Organization', name: current.company },
+          alumniOf: { '@type': 'CollegeOrUniversity', name: education.school },
+          knowsAbout: skills,
+          sameAs: [profile.github, profile.linkedin, profile.x].filter(Boolean),
+        },
+        {
+          '@type': 'WebSite',
+          '@id': `${Astro.site}#website`,
+          url: Astro.site?.href,
+          name: profile.name,
+          publisher: { '@id': `${Astro.site}#person` },
+        },
+      ],
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -14,16 +67,48 @@ const description = `${profile.role} in ${profile.location}. ${profile.tagline}`
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={profile.fullName} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0b0e13" />
+
+    <!-- Social previews (LinkedIn, Slack, WhatsApp, X…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <!-- Mark JS as available before first paint so scroll-reveal elements start hidden without flashing -->
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${profile.fullName} — ${profile.role}`} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {profile.xHandle && <meta name="twitter:creator" content={`@${profile.xHandle}`} />}
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <!-- Mark JS as available before first paint so scroll-reveal elements start hidden without flashing.
+         Also keep Firebase preview channels (…--pr6-….web.app) out of search results. -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (location.hostname.includes('--')) {
+        var m = document.createElement('meta');
+        m.name = 'robots';
+        m.content = 'noindex';
+        document.head.appendChild(m);
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -29,6 +29,7 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '');
           <li>{profile.phone}</li>
           <li><a href={profile.github}>{strip(profile.github)}</a></li>
           <li><a href={profile.linkedin}>{strip(profile.linkedin)}</a></li>
+          <li><a href={profile.website}>{strip(profile.website)}</a></li>
         </ul>
       </header>
 
