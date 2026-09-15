@@ -1,0 +1,703 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Section from '../components/Section.astro';
+import { profile, experience, projects, skills } from '../data/profile';
+---
+
+<Layout>
+  <div class="shell">
+    <div class="columns">
+      <Sidebar />
+
+      <main>
+        <Section id="about" label="About" index={1}>
+          <div class="about">
+            {profile.about.map((p, i) => <p data-reveal style={`--i:${i}`} set:html={p} />)}
+          </div>
+          <div class="toolbox" data-reveal>
+            <p class="toolbox-label">// tools I reach for</p>
+            <ul>
+              {skills.map((s) => <li class="tag">{s}</li>)}
+            </ul>
+          </div>
+        </Section>
+
+        <Section id="experience" label="Experience" index={2}>
+          <ol class="timeline" data-draw>
+            {
+              experience.map((job) => (
+                <li class="job" data-reveal>
+                  <span class="node" aria-hidden="true" />
+                  <p class="period">{job.period}</p>
+                  <h3>{job.role}</h3>
+                  <p class="company">
+                    {job.href ? (
+                      <a href={job.href} target="_blank" rel="noopener">
+                        {job.company} ↗
+                      </a>
+                    ) : (
+                      job.company
+                    )}
+                    <span class="sep">/</span>
+                    <span class="where">{job.location}</span>
+                  </p>
+                  <p class="summary">{job.summary}</p>
+                  <ul class="tags">
+                    {job.tags.map((t) => (
+                      <li class="tag">{t}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))
+            }
+          </ol>
+          <a class="more" data-reveal href={profile.cv} target="_blank" rel="noopener">
+            <span>Download full résumé</span><span class="arrow">↓</span>
+          </a>
+        </Section>
+
+        <Section id="projects" label="Projects" index={3}>
+          <ul class="projects">
+            {
+              projects.map((p) => (
+                <li data-reveal>
+                <div class="project" style={`--c:${p.color}`}>
+                  <div class="project-hover" aria-hidden="true" />
+                  <div class="project-body">
+                    <h3>
+                      <a class="project-title" href={p.links[0]?.href} target="_blank" rel="noopener">
+                        <span class="stretch" aria-hidden="true" />
+                        {p.name}
+                        <span class="arrow" aria-hidden="true">↗</span>
+                      </a>
+                    </h3>
+                    <p class="project-desc">{p.description}</p>
+                    <ul class="project-links">
+                      {p.links.map((l) => (
+                        <li>
+                          <a href={l.href} target="_blank" rel="noopener">
+                            {l.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <ul class="pills">
+                      {p.tags.map((t) => (
+                        <li>{t}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  {p.image ? (
+                    <img class="thumb" src={p.image} alt={`${p.name} screenshot`} loading="lazy" width="200" height="112" />
+                  ) : (
+                    <div class="thumb thumb-gen" aria-hidden="true">
+                      <span class="thumb-phone">
+                        <span class="thumb-icon">{p.name[0]}</span>
+                        <span class="thumb-line" />
+                        <span class="thumb-line short" />
+                      </span>
+                    </div>
+                  )}
+                </div>
+                </li>
+              ))
+            }
+          </ul>
+          <a class="more" data-reveal href="/archive">
+            <span>Browse the full project archive</span><span class="arrow">→</span>
+          </a>
+        </Section>
+
+        <section id="contact" class="contact" data-reveal aria-labelledby="contact-title">
+          <p class="contact-kicker">// what’s next</p>
+          <h2 id="contact-title">Let’s build something.</h2>
+          <p class="contact-lead">
+            Have an app idea, a product that needs a mobile lead, or a Flutter codebase that needs some love? I’d be glad to hear
+            about it.
+          </p>
+
+          <ul class="offer" data-reveal style="--i:2">
+            <li>
+              <h3>Cross-platform apps</h3>
+              <p>Flutter apps for iOS, Android and the web, from Figma designs to store release.</p>
+            </li>
+            <li>
+              <h3>Native mobile</h3>
+              <p>Kotlin and Swift work when a feature needs to go deeper than Flutter.</p>
+            </li>
+            <li>
+              <h3>Backends & APIs</h3>
+              <p>Node.js services, payments, analytics and the in-house tools that keep teams fast.</p>
+            </li>
+            <li>
+              <h3>Leading & mentoring</h3>
+              <p>Leading mobile teams and mentoring junior engineers.</p>
+            </li>
+          </ul>
+
+          <div class="contact-actions" data-reveal style="--i:3">
+            <a class="btn-primary" href={`mailto:${profile.email}?subject=Hello%20Kwaku`}>
+              Start a conversation <span aria-hidden="true">→</span>
+            </a>
+            <button type="button" class="btn-ghost" data-copy={profile.email}>
+              <span data-copy-label>Copy email</span>
+            </button>
+            <a class="btn-ghost" href={profile.cv} target="_blank" rel="noopener">Résumé</a>
+          </div>
+
+          <p class="contact-meta">
+            Based in {profile.location} (GMT) · previously worked with teams in Canada, the US and the UK
+          </p>
+        </section>
+
+        <footer>
+          <p class="credit">
+            Designed &amp; built by {profile.name} with Astro · layout inspired by{' '}
+            <a href="https://brittanychiang.com" target="_blank" rel="noopener">Brittany Chiang</a>
+          </p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .shell {
+    max-width: 1240px;
+    min-height: 100vh;
+    margin-inline: auto;
+    padding: 48px 24px;
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding: 72px 48px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .shell {
+      padding-block: 0;
+    }
+    .columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+    }
+  }
+  main {
+    padding-top: 72px;
+  }
+  @media (min-width: 1024px) {
+    main {
+      width: 54%;
+      padding-block: 88px 48px;
+    }
+  }
+
+  /* About */
+  .about p {
+    margin: 0 0 16px;
+  }
+  .toolbox {
+    margin-top: 28px;
+    padding: 20px;
+    border: 1px dashed var(--border-strong);
+    border-radius: 12px;
+  }
+  .toolbox-label {
+    margin: 0 0 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+  .toolbox ul,
+  .tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Experience timeline */
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 28px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border) 20%, var(--border));
+    transform-origin: top;
+    transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :global(.js) .timeline:not(.revealed)::before {
+    transform: scaleY(0);
+  }
+  :global(.js) .job:not(.revealed) .node {
+    transform: scale(0);
+  }
+  .job {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .job:last-child {
+    padding-bottom: 0;
+  }
+  .node {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1.5px solid var(--faint);
+    transition:
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s,
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .job:first-child .node {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .job:hover .node {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .period {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+  .job h3,
+  .project h3 {
+    margin: 4px 0 0;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .company {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .company a:hover {
+    text-decoration: underline;
+  }
+  .sep {
+    margin: 0 8px;
+    color: var(--border-strong);
+  }
+  .where {
+    color: var(--faint);
+    font-weight: 400;
+  }
+  .summary {
+    margin: 10px 0 14px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.2s ease;
+  }
+  .more:hover {
+    border-color: var(--accent);
+  }
+  .more .arrow {
+    color: var(--accent);
+    transition: transform 0.2s ease;
+  }
+  .more:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  /* Projects: Brittany-style rows */
+  .projects {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .project {
+    position: relative;
+    display: grid;
+    gap: 16px;
+    transition: opacity 0.25s ease;
+  }
+  @media (min-width: 640px) {
+    .project {
+      grid-template-columns: 2fr 6fr;
+      gap: 24px;
+    }
+    .project-body {
+      order: 2;
+    }
+    .thumb {
+      order: 1;
+      margin-top: 4px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .projects:hover .project {
+      opacity: 0.5;
+    }
+    .projects:hover .project:hover {
+      opacity: 1;
+    }
+  }
+  .project-hover {
+    position: absolute;
+    inset: -16px -20px;
+    border-radius: 10px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .project-hover {
+      display: block;
+    }
+    .project:hover .project-hover {
+      background: rgba(148, 163, 184, 0.05);
+      box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+    }
+  }
+  .project-body {
+    position: relative;
+    z-index: 1;
+  }
+  .project h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .project-title {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .project:hover .project-title,
+  .project-title:focus-visible {
+    color: var(--accent);
+  }
+  .stretch {
+    position: absolute;
+    inset: -16px -20px;
+    z-index: 0;
+  }
+  .arrow {
+    display: inline-block;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+  .project:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+  .project-desc {
+    margin: 8px 0 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .project-links {
+    position: relative;
+    z-index: 2;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .project-links a::after {
+    content: ' ↗';
+    color: var(--accent);
+  }
+  .project-links a:hover {
+    color: var(--accent);
+  }
+  .pills {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pills li {
+    transition: transform 0.2s ease;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .thumb {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid rgba(236, 232, 225, 0.1);
+    transition: border-color 0.25s ease;
+  }
+  .project:hover .pills li {
+    transform: translateY(-1px);
+  }
+  .project:hover .thumb {
+    border-color: rgba(236, 232, 225, 0.3);
+  }
+  .thumb-gen {
+    overflow: hidden;
+    background:
+      radial-gradient(90% 120% at 100% 100%, color-mix(in srgb, var(--c) 45%, transparent), transparent 60%),
+      linear-gradient(135deg, #151a22, #0e1218);
+  }
+  .thumb-phone {
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+    top: 14%;
+    width: 28%;
+    height: 110%;
+    border-radius: 10px;
+    background: #0b0e13;
+    border: 1.5px solid rgba(236, 232, 225, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 12%;
+  }
+  .thumb-icon {
+    width: 38%;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    background: var(--c);
+    color: #0b0e13;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10px;
+  }
+  .thumb-line {
+    width: 60%;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(236, 232, 225, 0.25);
+  }
+  .thumb-line.short {
+    width: 40%;
+  }
+
+  /* Contact */
+  .contact {
+    position: relative;
+    padding: 36px 28px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(70% 90% at 100% 0%, var(--accent-soft), transparent 60%),
+      var(--surface);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .contact {
+      padding: 44px 40px;
+    }
+  }
+  .contact-kicker {
+    margin: 0 0 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .contact h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(30px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .contact-lead {
+    margin: 14px 0 0;
+    max-width: 48ch;
+    font-size: 16px;
+  }
+  .offer {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  @media (min-width: 640px) {
+    .offer {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .offer li {
+    padding: 18px 20px;
+    background: var(--surface);
+    transition: background 0.2s ease;
+  }
+  .offer li:hover {
+    background: var(--surface-2);
+  }
+  .offer h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .offer h3::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 10px 2px 0;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .offer p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #04140e;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border-strong);
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .contact-meta {
+    margin: 22px 0 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  footer {
+    padding: 24px 0 8px;
+  }
+  .credit {
+    margin: 0;
+    font-size: 12px;
+    color: var(--faint);
+  }
+  .credit a {
+    color: var(--muted);
+  }
+  .credit a:hover {
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  // Copy email to clipboard
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const label = btn.querySelector('[data-copy-label]');
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+        if (label) label.textContent = 'Copied ✓';
+      } catch {
+        if (label) label.textContent = btn.dataset.copy ?? '';
+      }
+      setTimeout(() => label && (label.textContent = 'Copy email'), 2000);
+    });
+  });
+
+  // Highlight the nav item for the section in view
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-nav]');
+  const setActive = (id: string) =>
+    links.forEach((a) => a.classList.toggle('active', a.dataset.nav === id));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+    },
+    { rootMargin: '-35% 0px -60% 0px' }
+  );
+  const sections = document.querySelectorAll('main section:not(#contact)');
+  sections.forEach((s) => observer.observe(s));
+  // The last section may never reach the observer band, so pin it at page bottom.
+  window.addEventListener('scroll', () => {
+    if (innerHeight + scrollY >= document.body.scrollHeight - 4) setActive(sections[sections.length - 1].id);
+  });
+</script>

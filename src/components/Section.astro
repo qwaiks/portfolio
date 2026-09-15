@@ -1,0 +1,70 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  index: number;
+}
+const { id, label, index } = Astro.props;
+---
+
+<section id={id} aria-labelledby={`${id}-title`}>
+  <div class="head" data-reveal>
+    <span class="num">0{index}</span>
+    <h2 id={`${id}-title`}>{label}</h2>
+    <span class="rule" aria-hidden="true"></span>
+  </div>
+  <slot />
+</section>
+
+<style>
+  section {
+    margin-bottom: 96px;
+    scroll-margin-top: 24px;
+  }
+  @media (min-width: 1024px) {
+    section {
+      margin-bottom: 128px;
+      scroll-margin-top: 88px;
+    }
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 1023px) {
+    .head {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin-inline: -24px;
+      padding: 16px 24px;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      backdrop-filter: blur(8px);
+    }
+  }
+  .num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+  }
+  :global(.js) .head:not(.revealed) .rule {
+    transform: scaleX(0);
+  }
+</style>

@@ -1,0 +1,158 @@
+:root {
+  --bg: #0b0e13;
+  --surface: #11151c;
+  --surface-2: #161b24;
+  --border: #1f2632;
+  --border-strong: #2b3444;
+  --ink: #ece8e1;
+  --muted: #9199a5;
+  --faint: #5a6372;
+  --accent: #10b981;
+  --accent-rgb: 16, 185, 129;
+  --accent-soft: rgba(16, 185, 129, 0.12);
+  --display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Faint dot grid behind everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Accent dots revealed around the cursor (position set from JS) */
+.dot-spotlight {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(var(--accent-rgb), 0.55) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(220px at var(--x, -999px) var(--y, -999px), #000 0%, transparent 100%);
+  mask-image: radial-gradient(220px at var(--x, -999px) var(--y, -999px), #000 0%, transparent 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 20px;
+  color: var(--muted);
+}
+
+/* ---------- Motion ---------- */
+
+/* Cross-fade between pages (home ⇄ archive) in browsers that support it */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Load-in: children marked [data-intro] animate in on page load, staggered with --i */
+[data-intro] {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
+
+/* Scroll reveal: only hidden when JS is running (html.js), so content never disappears without it */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(4px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+.js [data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  @view-transition {
+    navigation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
