@@ -66,11 +66,15 @@ import { profile, experience, projects, skills } from '../data/profile';
                   <div class="project-hover" aria-hidden="true" />
                   <div class="project-body">
                     <h3>
-                      <a class="project-title" href={p.links[0]?.href} target="_blank" rel="noopener">
-                        <span class="stretch" aria-hidden="true" />
-                        {p.name}
-                        <span class="arrow" aria-hidden="true">↗</span>
-                      </a>
+                      {p.links[0] ? (
+                        <a class="project-title" href={p.links[0].href} target="_blank" rel="noopener">
+                          <span class="stretch" aria-hidden="true" />
+                          {p.name}
+                          <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                      ) : (
+                        <span class="project-title">{p.name}</span>
+                      )}
                     </h3>
                     <p class="project-desc">{p.description}</p>
                     <ul class="project-links">
@@ -89,7 +93,7 @@ import { profile, experience, projects, skills } from '../data/profile';
                     </ul>
                   </div>
                   {p.image ? (
-                    <img class="thumb" src={p.image} alt={`${p.name} screenshot`} loading="lazy" width="200" height="112" />
+                    <img class="thumb" src={p.image} alt={`${p.name}`} loading="lazy" decoding="async" width="1200" height="675" />
                   ) : (
                     <div class="thumb thumb-gen" aria-hidden="true">
                       <span class="thumb-phone">
@@ -473,6 +477,7 @@ import { profile, experience, projects, skills } from '../data/profile';
     z-index: 1;
     width: 100%;
     max-width: 240px;
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 6px;

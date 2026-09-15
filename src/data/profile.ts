@@ -123,6 +123,7 @@ export const projects: {
     role: 'Senior Mobile Engineer',
     tags: ['Flutter', 'iOS', 'Android', 'RevenueCat', 'Superwall'],
     color: '#fe2c55',
+    image: '/images/projects/tikfinity.webp',
     links: [
       { label: 'Website', href: 'https://tikfinity.zerody.one/mobile/' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/tikfinity-mobile-alerts-tts/id6578448936' },
@@ -136,6 +137,7 @@ export const projects: {
     role: 'Full Stack Mobile Developer',
     tags: ['Flutter', 'iOS', 'Android', 'Backend'],
     color: '#a855f7',
+    image: '/images/projects/asiaflare-latinflare.webp',
     links: [
       { label: 'AsiaFlare', href: 'https://asiaflareapp.com/' },
       { label: 'LatinFlare', href: 'https://latinflareapp.com/' },
@@ -148,10 +150,9 @@ export const projects: {
     role: 'Mobile & Web Developer',
     tags: ['Flutter', 'Web', 'Payments'],
     color: '#f5b544',
-    links: [
-      { label: 'Website', href: 'https://mybestpic.com' },
-      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mybestpic.twa' },
-    ],
+    image: '/images/projects/mybestpic.webp',
+    // The Play listing was taken down; only the website is live.
+    links: [{ label: 'Website', href: 'https://mybestpic.com' }],
   },
   {
     name: 'Trip o’clock',
@@ -160,6 +161,7 @@ export const projects: {
     role: 'Mobile Developer',
     tags: ['iOS', 'Android', 'AI'],
     color: '#22b8cf',
+    image: '/images/projects/tripoclock.webp',
     links: [
       { label: 'Website', href: 'https://tripoclock.com/' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/trip-oclock-travel-planner/id1661002132' },
@@ -173,6 +175,7 @@ export const projects: {
     role: 'Full Stack Mobile & Backend Developer',
     tags: ['Flutter', 'Node.js', 'Flutter Web'],
     color: '#34c38f',
+    image: '/images/projects/oben-health.webp',
     links: [{ label: 'Website', href: 'https://joinoben.com' }],
   },
   {
@@ -182,10 +185,9 @@ export const projects: {
     role: 'Lead Flutter Engineer',
     tags: ['Flutter', 'Android'],
     color: '#5b8def',
-    links: [
-      { label: 'Pro', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.pro' },
-      { label: 'Gratis', href: 'https://play.google.com/store/apps/details?id=com.wacommunicate.gratis' },
-    ],
+    image: '/images/projects/wacommunicate.webp',
+    // Both Play listings (Pro and Gratis) and the App Store listings have been removed.
+    links: [],
   },
 ];
 
@@ -265,7 +267,6 @@ export const archive: {
     name: 'WaCommunicate',
     madeAt: 'Walulel',
     tags: ['Flutter', 'Android'],
-    link: 'https://play.google.com/store/apps/details?id=com.wacommunicate.pro',
   },
   {
     year: '2021',
