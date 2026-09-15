@@ -41,7 +41,7 @@ See [docs/SEO.md](docs/SEO.md) for how it works, connecting a custom domain, and
 
 ## Deploy
 
-The site is hosted on Firebase Hosting (project `ntim-dev`) via GitHub Actions:
+The site is live at **https://kwakuntim.com**, hosted on Firebase Hosting (project `ntim-dev`) via GitHub Actions:
 
 - **Pull request** → `.github/workflows/firebase-hosting-pull-request.yml` builds the site and deploys a temporary
   preview channel; the preview URL is posted as a comment on the PR.

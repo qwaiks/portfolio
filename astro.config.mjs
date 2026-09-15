@@ -4,8 +4,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // The site's public address. Used for canonical URLs, the sitemap, robots.txt and social previews.
-// 👉 When the custom domain is live on Firebase Hosting, change this one line (e.g. 'https://ntim.dev') and redeploy.
-export const SITE_URL = 'https://ntim-dev.web.app';
+// If the domain ever changes: update this line, run `npm run og`, and redeploy.
+export const SITE_URL = 'https://kwakuntim.com';
 
 // https://astro.build/config
 export default defineConfig({

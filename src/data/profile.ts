@@ -19,6 +19,7 @@ export const profile = {
   email: 'kwaku315@gmail.com',
   phone: '+233 20 904 7863', // shown on the résumé only
   linkedin: 'https://www.linkedin.com/in/kwaku-owusu-ansa',
+  website: 'https://kwakuntim.com',
   github: 'https://github.com/qwaiks',
   x: 'https://x.com/ntim_cx',
   xHandle: 'ntim_cx',
