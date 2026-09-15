@@ -7,6 +7,12 @@ export const yearsOfExperience = new Date().getFullYear() - careerStartYear - 1;
 
 export const profile = {
   name: 'Kwaku Owusu-Ansa',
+  // Full legal name plus common spellings, so searches for any of them find the site.
+  fullName: 'Kwaku Ntim Owusu-Ansa',
+  givenName: 'Kwaku',
+  additionalName: 'Ntim',
+  familyName: 'Owusu-Ansa',
+  alternateNames: ['Kwaku Ntim Owusu-Ansa', 'Kwaku Owusu Ansa', 'Kwaku Ntim Owusu Ansa', 'Ntim'],
   role: 'Senior Mobile Engineer',
   tagline: 'I build fast, beautiful mobile apps — and the backends that power them.',
   location: 'Accra, Ghana',
@@ -20,10 +26,10 @@ export const profile = {
   cv: '/Kwaku-Owusu-Ansa-Resume.pdf',
   // Shown in Google results and link previews. Keep it around 150–160 characters.
   seoDescription:
-    'Kwaku Owusu-Ansa is a Senior Mobile Engineer in Accra, Ghana, building Flutter, iOS and Android apps and Next.js / Node.js backends used by thousands every day.',
+    'Kwaku Ntim Owusu-Ansa is a Senior Mobile Engineer in Accra, Ghana, building Flutter, iOS and Android apps and Next.js / Node.js backends used by thousands daily.',
   // Paragraphs may contain <strong> for highlighted words.
   about: [
-    `I’m a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>${yearsOfExperience} years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.`,
+    `I’m <strong>Kwaku Ntim Owusu-Ansa</strong>, a full-stack mobile engineer who loves turning ideas into products people enjoy using. For over <strong>${yearsOfExperience} years</strong> I’ve shipped apps with <strong>Flutter</strong>, native <strong>Android</strong> and <strong>iOS</strong>, and built the <strong>Node.js</strong> and <strong>Next.js</strong> services and in-house tooling behind them.`,
     'Currently, I’m a Senior Mobile Engineer at <strong>StreamTV Group</strong>, where I build a Flutter app used by <strong>more than 20K daily active users</strong> — real-time live-stream interactions, sound alerts, text-to-speech and subscriptions — along with the Next.js platform and backend that power it.',
     'Along the way I’ve built software that reached <strong>over 1.5 million farmers</strong> in Ghana, helped health coaches in California support their clients, and connected building managers and tenants in London. I also enjoy mentoring junior engineers and building shared packages that make whole teams faster.',
   ],
